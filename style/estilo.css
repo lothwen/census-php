@@ -1,0 +1,32 @@
+body{/*background-color: #87CEFA;*/
+			background-color: white;
+			background-image: url(https://euskai.org/census/images/fondo.png);
+			background-repeat: repeat-x;
+			background-attachment: fixed;
+	
+}
+
+.container{border-collapse: separate;
+	border-spacing: 8px;
+	border-width: 1px;
+	font: normal 0.9em tahoma, arial, sans-serif;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	background-color: white;
+}
+
+.header{}
+
+.menu{text-align: center;
+	border-style: dashed;
+	border-width: 1px;
+	font: normal 0.9em tahoma, arial, sans-serif;
+}
+
+.content{}
+
+.footer{background-color: #1b9fe3;
+	color: white;
+	text-align: center;
+	font: normal 0.9em tahoma, arial, sans-serif;
+}

@@ -1,0 +1,29 @@
+a:hover{font-weight: bold;
+	background-color: #87CEFA;
+}
+
+
+body{background-color: #87CEFA;
+}
+
+.container{border-collapse: separate;
+	border-spacing: 8px;
+	border-width: 1px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	background-color: white;
+}
+
+.header{}
+
+.menu{text-align: center;
+	border-style: dashed;
+	border-width: 1px;
+}
+
+.content{}
+
+.footer{background-color: #1b9fe3;
+	color: white;
+	text-align: center;
+}
