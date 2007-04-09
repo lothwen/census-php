@@ -2,7 +2,7 @@
 
 	$db_host ="localhost";
 	$user = "root";
-	$password = "19hurones73";
+	$password = "";
 	$database = "censo";
 	
 	$select_default="NOMBRE,APELLIDOS,TELEFONO,";
