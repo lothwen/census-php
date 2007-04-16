@@ -205,7 +205,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 		echo "<form action=exportar.php method=post>";
 		echo "<input type=\"hidden\" value='".$query."'";
 		echo "<th class=\"cab_tabla\"><input type=\"img\" name=\"sentencia\" src=\"images/pdf-icon.gif\" border=\"0\"/></th>";
-		echo "</form>"
+		echo "</form>";
 		echo "</tr>"; 
 		
 		for($i=0;$i<$numFilas;$i++){
