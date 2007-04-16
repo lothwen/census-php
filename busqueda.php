@@ -203,8 +203,8 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 			echo "<th class=\"cab_tabla\">".$field->name."</th>";
 		}
 		echo "<form action=exportar.php method=post>";
-		echo "<input type=\"hidden\" value='".$query."'";
-		echo "<th class=\"cab_tabla\"><input type=\"img\" name=\"sentencia\" src=\"images/pdf-icon.gif\" border=\"0\"/></th>";
+		echo "<input type=hidden value='".$query."'>";
+		echo "<th class=\"cab_tabla\"><input type=\"image\" name=\"sentencia\" src=\"images/pdf-icon.gif\" border=\"0\"/></th>";
 		echo "</form>";
 		echo "</tr>"; 
 		
