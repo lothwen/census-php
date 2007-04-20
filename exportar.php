@@ -305,10 +305,6 @@ $pdf->SetFont('Arial','',11.5);
 $pdf->AliasNbPages();
 $pdf->connect('localhost','root','','censo');
 $attr=array('titleFontSize'=>18,'titleText'=>'Censo Euskai Eskaut Taldea');
-//$pdf->mysql_report("SELECT * FROM census LIMIT 100",false,$attr);
-//$pdf->mysql_report("SELECT NOMBRE,TELEFONO FROM census LIMIT 100",false,$attr);
-//$pdf->mysql_report($_SESSION['query'],false,$attr);
-//echo $_SESSION['query'];
-$pdf->mysql_report($_POST['sentenia'],false,$attr);
+$pdf->mysql_report($_POST['sentencia'],false,$attr);
 echo $_POST['sentencia'];
 ?>
