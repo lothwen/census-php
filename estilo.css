@@ -1,14 +1,16 @@
-a:hover{font-weight: bold;
-	background-color: #87CEFA;
-}
-
-
-body{background-color: #87CEFA;
+body{
+	background-color: white;
+	background-image: url(/images/fondo.png);
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+	
 }
 
 .container{border-collapse: separate;
 	border-spacing: 8px;
 	border-width: 1px;
+	font: normal 0.9em tahoma, arial, sans-serif;
+	color: #1b9fe3;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	background-color: white;
@@ -19,6 +21,7 @@ body{background-color: #87CEFA;
 .menu{text-align: center;
 	border-style: dashed;
 	border-width: 1px;
+	font: normal 0.9em tahoma, arial, sans-serif;
 }
 
 .content{}
@@ -26,4 +29,17 @@ body{background-color: #87CEFA;
 .footer{background-color: #1b9fe3;
 	color: white;
 	text-align: center;
+	font: normal 0.9em tahoma, arial, sans-serif;
 }
+
+input select{
+        margin-bottom:3px;
+        border: 1px solid #1b9fe3;
+        padding:3px;
+        font-family: tahoma, arial, sans-serif;
+        color: #1b9fe3;
+        font-size: 10px;
+        font-weight:bold;
+        Text-Decoration: none;
+}
+
