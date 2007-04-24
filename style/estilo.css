@@ -30,3 +30,14 @@ body{/*background-color: #87CEFA;*/
 	text-align: center;
 	font: normal 0.9em tahoma, arial, sans-serif;
 }
+
+input{
+        margin-bottom:3px;
+        border: 1px solid #1b9fe3;
+        padding:3px;
+        font-family: verdana, sans-serif;
+        color: #1b9fe3;
+        font-size: 10px;
+        font-weight:bold;
+        Text-Decoration: none;
+}
