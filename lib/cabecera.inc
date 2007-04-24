@@ -3,11 +3,11 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>Euskai Census v1.0</title>
-<link rel="STYLESHEET" href="style/estilo.css" type="text/css">
-<link rel="STYLESHEET" href="style/estilo-tabla.css" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<title>Euskai Census v1.0</title>
+	<link rel="STYLESHEET" href="style/estilo.css" type="text/css">
+	<link rel="STYLESHEET" href="style/estilo-tabla.css" type="text/css">
 </head>
 
 <body>
