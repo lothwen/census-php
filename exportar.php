@@ -1,6 +1,7 @@
 <?php
 session_start();
 define(FPDF_FONTPATH,'font/');
+require('configuracion.php');
 require('fpdf.php');
 
 class PDF extends FPDF {
@@ -303,7 +304,7 @@ function mysql_report($query,$dump=false,$attr=array()){
 $pdf = new PDF('L','pt','A4');
 $pdf->SetFont('Arial','',11.5);
 $pdf->AliasNbPages();
-$pdf->connect('localhost','root','','censo');
+$pdf->connect($db_host,$user,$password,$database);
 $attr=array('titleFontSize'=>18,'titleText'=>'Censo Euskai Eskaut Taldea');
 $pdf->mysql_report($_POST['sentencia'],false,$attr);
 echo $_POST['sentencia'];
