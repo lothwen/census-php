@@ -175,10 +175,10 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 		$where = $where . "NOMBRE=\"" . trim($_POST['nombre_where']) ."\" ";
 	}
 	if(!empty($_POST['apellidos_where'])){
-		$where = $where . "APELLIDOS=\"" . trim($_POST['apellidos_where']) ."\" ";
+		$where .= $where . "APELLIDOS=\"" . trim($_POST['apellidos_where']) ."\" ";
 	}
 	if(!$_POST['rama_where'] == '6'){	
-		$where = $where . "RAMA=" . $_POST['rama_where'] . " ";
+		$where .= $where . "RAMA=" . $_POST['rama_where'] . " ";
 	}
 	// Perform MySQL query on only the current page number's results
 	$query  = "SELECT $select FROM census WHERE $where";
