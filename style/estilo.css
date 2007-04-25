@@ -32,7 +32,7 @@ body{
 	font: normal 0.9em tahoma, arial, sans-serif;
 }
 
-input select{
+input, select{
         margin-bottom:3px;
         border: 1px solid #1b9fe3;
         padding:3px;
