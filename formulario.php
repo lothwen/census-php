@@ -26,7 +26,7 @@ function f_aceptar(){
 }
 </script>
 <?
-include 'lib/cabecera.inc';
+include 'lib/cabecera.php';
 
 if($_POST){ 
 
@@ -131,4 +131,4 @@ if($_POST){
 	
 </form>
 
-<?include 'lib/footer.inc'?>
+<?include 'lib/footer.php'?>

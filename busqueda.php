@@ -1,6 +1,6 @@
-<?session_start()?>
-<?include 'lib/cabecera.inc'?>
-<?
+<?session_start()
+include 'lib/cabecera.php'
+
 if (!$_POST && !$page){
 
 if(session_is_registered('query')){
@@ -261,4 +261,4 @@ if($page < $total_pages){
 echo "</center>";
 }
 ?>
-<?include 'lib/footer.inc'?>
+<?include 'lib/footer.php'?>

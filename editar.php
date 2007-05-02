@@ -25,9 +25,9 @@ function f_aceptar(){
 	}
 }
 </script>
-<?include 'lib/cabecera.inc'?>
 <?
-require 'configuracion.php';
+include 'lib/cabecera.php'
+include 'configuracion.php';
 
 //Conecto a la base de datos
 mysql_select_db($database, mysql_pconnect($db_host,$user,$password)) or die (mysql_error());
@@ -173,5 +173,5 @@ if ($borrar){
 </form>
 <?
 }
-include 'lib/footer.inc';
+include 'lib/footer.php';
 ?>
