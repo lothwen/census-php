@@ -27,7 +27,7 @@ function f_aceptar(){
 </script>
 <?
 include 'lib/cabecera.php'
-include 'configuracion.php';
+include 'lib/configuracion.php';
 
 //Conecto a la base de datos
 mysql_select_db($database, mysql_pconnect($db_host,$user,$password)) or die (mysql_error());

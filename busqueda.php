@@ -97,7 +97,7 @@ if(session_is_registered('query')){
 }else{ 
 
 // Cojo los datos para la conexion
-require 'configuracion.php';
+include 'lib/configuracion.php';
 
 //Conecto a la base de datos
 mysql_select_db($database, mysql_pconnect($db_host,$user,$password)) or die (mysql_error());

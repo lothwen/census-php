@@ -30,7 +30,7 @@ include 'lib/cabecera.php';
 
 if($_POST){ 
 
-	require("configuracion.php");
+	include 'lib/configuracion.php';
 	
 
 	//Si no hay campos vacios, comenzamos con la conexion a la bbdd
