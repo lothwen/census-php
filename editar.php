@@ -57,8 +57,6 @@ if ($borrar){
 
 	//Recojo todos los datos del chaval a editar
 	$result = f_leer("SELECT *  FROM census WHERE ID=".$id);
-
-88
 	$fila = mysql_fetch_array($result);
 ?>
 <form name="actualizar" method="post" action="?id=<?echo $fila['ID']?>">
