@@ -1,3 +1,9 @@
+<?
+include 'lib/conexionbd.php';
+include 'lib/cab0.php';
+?>
+<title>Euskai Census v1.0 : Realizar una busqueda</title>
+
 <script>
 function f_aceptar(){
 
@@ -25,9 +31,9 @@ function f_aceptar(){
 	}
 }
 </script>
-<?
-include 'lib/cabecera.php';
-include 'lib/conexionbd.php';
+</head>
+<? 
+include 'lib/cab1.php';
 	
 if ($borrar){
 

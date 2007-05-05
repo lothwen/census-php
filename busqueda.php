@@ -1,7 +1,11 @@
 <?
-session_start();
-include 'lib/cabecera.php';
 include 'lib/conexionbd.php';
+include 'lib/cab0.php';
+?>
+<title>Euskai Census v1.0 : Realizar una busqueda</title>
+</head>
+<? 
+include 'lib/cab1.php';
 
 if (!$_POST && !$page){
 

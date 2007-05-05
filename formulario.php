@@ -1,3 +1,7 @@
+<? 
+include 'lib/cab0.php';
+?>
+
 <script>
 function f_aceptar(){
 
@@ -25,6 +29,9 @@ function f_aceptar(){
 	}
 }
 </script>
+
+<title>Euskai Census 1.0: Añadir nuevo chaval</title>
+</head>
 <?
 include 'lib/cabecera.php';
 
