@@ -1,4 +1,5 @@
-<?session_start()
+<?
+session_start();
 include 'lib/cabecera.php';
 include 'lib/conexionbd.php';
 
