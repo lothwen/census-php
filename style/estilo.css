@@ -43,3 +43,6 @@ input, select{
         Text-Decoration: none;
 }
 
+#imagen{
+	border: 0;
+}
