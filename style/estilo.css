@@ -6,7 +6,7 @@ body{
 	
 }
 
-.container{border-collapse: separate;
+#container{border-collapse: separate;
 	border-spacing: 8px;
 	border-width: 1px;
 	font: normal 0.9em tahoma, arial, sans-serif;
@@ -16,7 +16,7 @@ body{
 	background-color: white;
 }
 
-.header{}
+#header{}
 
 .menu{text-align: center;
 	border-style: dashed;
@@ -24,9 +24,9 @@ body{
 	font: normal 0.9em tahoma, arial, sans-serif;
 }
 
-.content{}
+#content{}
 
-.footer{background-color: #1b9fe3;
+#footer{background-color: #1b9fe3;
 	color: white;
 	text-align: center;
 	font: normal 0.9em tahoma, arial, sans-serif;
@@ -43,6 +43,6 @@ input, select{
         Text-Decoration: none;
 }
 
-#imagen{
+.imagen{
 	border: 0;
 }
