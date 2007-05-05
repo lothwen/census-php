@@ -1,5 +1,6 @@
 <?session_start()
 include 'lib/cabecera.php'
+include 'lib/conexionbd.php';
 
 if (!$_POST && !$page){
 
@@ -96,12 +97,6 @@ if(session_is_registered('query')){
 <?
 }else{ 
 
-// Cojo los datos para la conexion
-include 'lib/configuracion.php';
-
-//Conecto a la base de datos
-mysql_select_db($database, mysql_pconnect($db_host,$user,$password)) or die (mysql_error());
-
 //Formo el select a partir de los datos que recojo de los chekbox
 if($_POST['todos']){
 	$select = '*';
@@ -155,7 +150,7 @@ $from = (($page * $max_results) - $max_results);
 if(session_is_registered('query')){
 	
 	$query2 = $query." LIMIT ".$from.",".$max_results;
-	$result = mysql_query($query2);
+	$result = f_leer($query2);
 	if($debug) echo "Consulta Session: " . $query2;
 }
 
@@ -168,7 +163,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 		session_register('query');
 	}
 	$query2 = $query." LIMIT ".$from.",".$max_results;
-	$result = mysql_query($query2);
+	$result = f_leer($query2);
 	if($debug) echo "Consulta sin Where: " . $query2;
 }else{
 	if(!empty($_POST['nombre_where'])){
@@ -186,7 +181,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 		session_register('query');
 	}
 	$query2 = $query." LIMIT ".$from.",".$max_results;
-	$result = mysql_query($query2);
+	$result = f_leer($query2);
 	if($debug) echo "Consulta con Where: " . $query2;
 }
 
@@ -231,7 +226,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 } 
 
 // Figure out the total number of results in DB:
-$total_results = mysql_result(mysql_query("SELECT COUNT(*) as Num FROM census"),0);
+$total_results = mysql_result(f_leer("SELECT COUNT(*) as Num FROM census"),0);
 
 // Figure out the total number of pages. Always round up using ceil()
 $total_pages = ceil($total_results / $max_results);

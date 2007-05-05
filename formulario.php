@@ -30,30 +30,16 @@ include 'lib/cabecera.php';
 
 if($_POST){ 
 
-	include 'lib/configuracion.php';
+	include 'lib/conexionbd.php';
 	
-
-	//Si no hay campos vacios, comenzamos con la conexion a la bbdd
-	$link = mysql_connect($db_host,$user,$password) 
-		or die("No se puede realizar la conexion a la bbdd");
-			
-	mysql_select_db($database,$link);
-
 	//Con esta sentencia SQL, insertamos los datos en la bbdd
 	$sSql = "INSERT INTO census VALUES(NULL,'{$_POST['nombre']}',
 		'{$_POST['apellidos']}','{$_POST['rama']}','{$_POST['direccion']}',
 		'{$_POST['dni']}','{$_POST['ama']}','{$_POST['dni_ama']}','{$_POST['aita']}',
 		'{$_POST['dni_aita']}','{$_POST['telefono']}','{$_POST['movil']}')";
-	$result = mysql_query($sSql,$link);
+	f_ejecutar($sSql);
 
-	if (!$result) {
-	
-		die(' Query Invalida: '. mysql_error());
-		
-	}else{
-			
-		echo '<script>alert("Los datos han sido introducidos satisfactoriamente")</script>';
-	}
+	echo '<script>alert("Los datos han sido introducidos satisfactoriamente")</script>';
 }	
 
 ?>

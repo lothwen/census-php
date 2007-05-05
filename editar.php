@@ -27,19 +27,13 @@ function f_aceptar(){
 </script>
 <?
 include 'lib/cabecera.php'
-include 'lib/configuracion.php';
-
-//Conecto a la base de datos
-mysql_select_db($database, mysql_pconnect($db_host,$user,$password)) or die (mysql_error());
+include 'lib/conexionbd.php';
 	
 if ($borrar){
 
 	//Con esta sentencia SQL, borramos el registro de la bbdd
-	$result = mysql_query("DELETE FROM census WHERE ID=".$borrar);
+	f_ejecutar("DELETE FROM census WHERE ID=$borrar");
 
-	if (!$result) {
-		die(' Query Invalida: '. mysql_error());
-	}
 	if($debug){
 		echo "Borrando el chaval : ".$borrar;
 	}else{
@@ -51,11 +45,7 @@ if ($borrar){
 	// Actualizo todos los datos.
 	$sSql = "UPDATE census SET NOMBRE='$nombre', APELLIDOS='$apellidos', RAMA='$rama', DNI='$dni', AMA='$ama',";
 	$sSql .= "DNI_AMA='$dni_ama', AITA='$aita', DNI_AITA='$dni_aita', DIRECCION='$direccion', TELEFONO='$telefono', MOVIL='$movil' WHERE ID='$id'";
-	$result = mysql_query($sSql);
-	
-	if (!$result) {
-		die(' Query Invalida: '. mysql_error());
-	}
+	f_ejecutar($sSql);
 	
 	if($debug){
 		echo $sSql."<br>";
@@ -66,12 +56,9 @@ if ($borrar){
 }else{ 
 
 	//Recojo todos los datos del chaval a editar
-	$result = mysql_query("SELECT *  FROM census WHERE ID=".$id);
+	$result = f_leer("SELECT *  FROM census WHERE ID=".$id);
 
-	if (!$result) {
-		die(' Query Invalida: '. mysql_error());
-	}
-
+88
 	$fila = mysql_fetch_array($result);
 ?>
 <form name="actualizar" method="post" action="?id=<?echo $fila['ID']?>">
