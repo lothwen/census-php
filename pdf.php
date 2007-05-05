@@ -307,5 +307,4 @@ $pdf->AliasNbPages();
 $pdf->connect($db_host,$user,$password,$database);
 $attr=array('titleFontSize'=>18,'titleText'=>'Censo Euskai Eskaut Taldea');
 $pdf->mysql_report($_POST['sentencia'],false,$attr);
-echo $_POST['sentencia'];
 ?>
