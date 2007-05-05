@@ -1,5 +1,5 @@
 <?session_start()
-include 'lib/cabecera.php'
+include 'lib/cabecera.php';
 include 'lib/conexionbd.php';
 
 if (!$_POST && !$page){
