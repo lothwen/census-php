@@ -26,7 +26,7 @@ function f_aceptar(){
 }
 </script>
 <?
-include 'lib/cabecera.php'
+include 'lib/cabecera.php';
 include 'lib/conexionbd.php';
 	
 if ($borrar){
