@@ -137,19 +137,17 @@ if($_POST['todos']){
 	$select .= " ";
 }
 
-// If current page number, use it
-// if not, set one!
+// Si no existe $page, es que es la pagina 1.
+// Sino, usamos la $page que viene dada por el parametro.
 if(!isset($_GET['page'])){
     $page = 1;
 } else {
     $page = $_GET['page'];
 }
 
-// Define the number of results per page
 $max_results = 10;
 
-// Figure out the limit for the query based
-// on the current page number.
+// Calculo el limite para la query, basandome en la pagina en la que estoy
 $from = (($page * $max_results) - $max_results); 
 
 if(session_is_registered('query')){
@@ -162,7 +160,7 @@ if(session_is_registered('query')){
 //Si no hay ningun criterio seleccionado, ejecuta la sentencia sin where
 elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_POST['rama_where'] == '6'){
 
-	// Perform MySQL query on only the current page number's results
+	// Leo de la bbdd, solo los registros que forman esta pagina.
 	$query = "SELECT ".$select."FROM census"; 
 	if (!session_is_registered('query')){
 		session_register('query');
@@ -180,7 +178,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if(!$_POST['rama_where'] == '6'){	
 		$where .= $where . "RAMA=" . $_POST['rama_where'] . " ";
 	}
-	// Perform MySQL query on only the current page number's results
+	// Leo de la bbdd, solo los registros que forman esta pagina.
 	$query  = "SELECT $select FROM census WHERE $where";
 	if (!session_is_registered('query')){
 		session_register('query');
@@ -230,35 +228,38 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	
 } 
 
-// Figure out the total number of results in DB:
-$total_results = mysql_result(f_leer("SELECT COUNT(*) as Num FROM census"),0);
+// Muestro los botones de navegacion, si hacen falta.
+if ($numFilas > $max_results){
 
-// Figure out the total number of pages. Always round up using ceil()
-$total_pages = ceil($total_results / $max_results);
+	// Cuento el total de registros en la bbdd
+	$total_results = mysql_result(f_leer("SELECT COUNT(*) as Num FROM census"),0);
 
-// Build Page Number Hyperlinks
-echo "<br><center>Selecciona una pagina<br>";
+	// Calculo el total de paginas que hacen falta. Redondeo usando ceil()
+	$total_pages = ceil($total_results / $max_results);
 
-// Build Previous Link
-if($page > 1){
-    $prev = ($page - 1);
-    echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$prev\">Anterior</a> ";
+	echo "<br><center>Selecciona una pagina<br>";
+
+	// Enlace anterior
+	if($page > 1){
+    		$prev = ($page - 1);
+    		echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$prev\">Anterior</a> ";
+	}
+
+	for($i = 1; $i <= $total_pages; $i++){
+    		if(($page) == $i){
+        		echo "$i ";
+        	} else {
+            		echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$i\">$i</a> ";
+    		}
+	}	
+
+	// Enlace posterior
+	if($page < $total_pages){
+    		$next = ($page + 1);
+    		echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$next\">Siguiente>></a>";
+	}
+	echo "</center>";
 }
-
-for($i = 1; $i <= $total_pages; $i++){
-    if(($page) == $i){
-        echo "$i ";
-        } else {
-            echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$i\">$i</a> ";
-    }
-}
-
-// Build Next Link
-if($page < $total_pages){
-    $next = ($page + 1);
-    echo "<a href=\"".$_SERVER['PHP_SELF']."?page=$next\">Siguiente>></a>";
-}
-echo "</center>";
 }
 ?>
 <?include 'lib/footer.php'?>
