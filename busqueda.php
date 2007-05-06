@@ -151,6 +151,9 @@ $from = (($page * $max_results) - $max_results);
 
 if(session_is_registered('query')){
 	
+//Cuento cuantas filas tiene la busqueda en total. Usado al generar el menu de navagacion.
+	$total_results = mysql_num_rows(f_leer($query));
+
 	$query2 = $query." LIMIT ".$from.",".$max_results;
 	$result = f_leer($query2);
 	if($debug) echo "Consulta Session: " . $query2;
@@ -164,6 +167,9 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if (!session_is_registered('query')){
 		session_register('query');
 	}
+	//Cuento cuantas filas tiene la busqueda en total. Usado al generar el menu de navagacion.
+	$total_results = mysql_num_rows(f_leer($query));
+
 	$query2 = $query." LIMIT ".$from.",".$max_results;
 	$result = f_leer($query2);
 	if($debug) echo "Consulta sin Where: " . $query2;
@@ -182,6 +188,9 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if (!session_is_registered('query')){
 		session_register('query');
 	}
+	//Cuento cuantas filas tiene la busqueda en total. Usado al generar el menu de navagacion.
+	$total_results = mysql_num_rows(f_leer($query));
+	
 	$query2 = $query." LIMIT ".$from.",".$max_results;
 	$result = f_leer($query2);
 	if($debug) echo "Consulta con Where: " . $query2;
@@ -228,10 +237,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 } 
 
 // Muestro los botones de navegacion, si hacen falta.
-if ($numFilas > $max_results){
-
-	// Cuento el total de registros en la bbdd
-	$total_results = mysql_result(f_leer("SELECT COUNT(*) as Num FROM census"),0);
+if ($total_results > $max_results){
 
 	// Calculo el total de paginas que hacen falta. Redondeo usando ceil()
 	$total_pages = ceil($total_results / $max_results);
