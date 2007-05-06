@@ -1,6 +1,7 @@
 <?
 include 'lib/conexionbd.php';
 include 'lib/cab0.php';
+include 'lib/configuracion.php';
 ?>
 <title>Euskai Census v1.0 : Realizar una busqueda</title>
 </head>
@@ -144,8 +145,6 @@ if(!isset($_GET['page'])){
 } else {
     $page = $_GET['page'];
 }
-
-$max_results = 10;
 
 // Calculo el limite para la query, basandome en la pagina en la que estoy
 $from = (($page * $max_results) - $max_results); 
