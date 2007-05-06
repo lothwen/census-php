@@ -33,7 +33,7 @@ function f_aceptar(){
 <title>Euskai Census 1.0: Añadir nuevo chaval</title>
 </head>
 <?
-include 'lib/cabecera.php';
+include 'lib/cab1.php';
 
 if($_POST){ 
 
