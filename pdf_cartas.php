@@ -326,7 +326,7 @@ include 'lib/conexionbd.php';
 
 $where = "";
 if ($_POST['rama']==6)
-	$where = "WHERE RAMA=".$_POST[];	
+	$where = "WHERE RAMA=".$_POST['rama'];	
 
 $sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM census $where";
 $consulta = f_leer($sSql);
