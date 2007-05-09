@@ -1,310 +1,350 @@
 <?php
-session_start();
-define(FPDF_FONTPATH,'font/');
-require('lib/configuracion.php');
-require('fpdf.php');
+////////////////////////////////////////////////////
+// PDF_Label
+//
+// Class to print labels in Avery or custom formats
+//
+//
+// Copyright (C) 2003 Laurent PASSEBECQ (LPA)
+// Based on code by Steve Dillon : steved@mad.scientist.com
+//
+//-------------------------------------------------------------------
+// VERSIONS :
+// 1.0  : Initial release
+// 1.1  : + : Added unit in the constructor
+//        + : Now Positions start @ (1,1).. then the first image @top-left of a page is (1,1)
+//        + : Added in the description of a label :
+//                font-size    : defaut char size (can be changed by calling Set_Char_Size(xx);
+//                paper-size    : Size of the paper for this sheet (thanx to Al Canton)
+//                metric        : type of unit used in this description
+//                              You can define your label properties in inches by setting metric to 'in'
+//                              and printing in millimiter by setting unit to 'mm' in constructor.
+//              Added some labels :
+//                5160, 5161, 5162, 5163,5164 : thanx to Al Canton : acanton@adams-blake.com
+//                8600                         : thanx to Kunal Walia : kunal@u.washington.edu
+//        + : Added 3mm to the position of labels to avoid errors
+// 1.2  : + : Added Set_Font_Name method
+//        = : Bug of positioning
+//        = : Set_Font_Size modified -> Now, just modify the size of the font
+//        = : Set_Char_Size renamed to Set_Font_Size
+////////////////////////////////////////////////////
 
-class PDF extends FPDF {
+/**
+* PDF_Label - PDF label editing
+* @package PDF_Label
+* @author Laurent PASSEBECQ <lpasseb@numericable.fr>
+* @copyright 2003 Laurent PASSEBECQ
+**/
 
-var $tablewidths;
-var $headerset;
-var $footerset;
+require_once('fpdf.php');
 
-function _beginpage($orientation) {
-    $this->page++;
-    if(!$this->pages[$this->page]) // solved the problem of overwriting a page, if it already exists
-        $this->pages[$this->page]='';
-    $this->state=2;
-    $this->x=$this->lMargin;
-    $this->y=$this->tMargin;
-    $this->lasth=0;
-    $this->FontFamily='';
-    //Page orientation
-    if(!$orientation)
-        $orientation=$this->DefOrientation;
-    else
-    {
-        $orientation=strtoupper($orientation{0});
-        if($orientation!=$this->DefOrientation)
-            $this->OrientationChanges[$this->page]=true;
-    }
-    if($orientation!=$this->CurOrientation)
-    {
-        //Change orientation
-        if($orientation=='P')
-        {
-            $this->wPt=$this->fwPt;
-            $this->hPt=$this->fhPt;
-            $this->w=$this->fw;
-            $this->h=$this->fh;
+class PDF_Label extends FPDF {
+
+    // Private properties
+    var $_Avery_Name    = '';                // Name of format
+    var $_Margin_Left    = 0;                // Left margin of labels
+    var $_Margin_Top    = 0;                // Top margin of labels
+    var $_X_Space         = 0;                // Horizontal space between 2 labels
+    var $_Y_Space         = 0;                // Vertical space between 2 labels
+    var $_X_Number         = 0;                // Number of labels horizontally
+    var $_Y_Number         = 0;                // Number of labels vertically
+    var $_Width         = 0;                // Width of label
+    var $_Height         = 0;                // Height of label
+    var $_Char_Size        = 10;                // Character size
+    var $_Line_Height    = 10;                // Default line height
+    var $_Metric         = 'mm';                // Type of metric for labels.. Will help to calculate good values
+    var $_Metric_Doc     = 'mm';                // Type of metric for the document
+    var $_Font_Name        = 'Arial';            // Name of the font
+
+    var $_COUNTX = 1;
+    var $_COUNTY = 1;
+
+
+    // Listing of labels size
+    var $_Avery_Labels = array (
+        '5160'=>array(
+		'name'=>'5160',    
+		'paper-size'=>'letter',    
+		'metric'=>'mm',    
+		'marginLeft'=>1.762,    
+		'marginTop'=>10.7,        
+		'NX'=>3,    
+		'NY'=>10,    
+		'SpaceX'=>3.175,    
+		'SpaceY'=>0,    
+		'width'=>66.675,    
+		'height'=>25.4,        
+		'font-size'=>8),
+        '5161'=>array(
+		'name'=>'5161',    
+		'paper-size'=>'letter',    
+		'metric'=>'mm',    
+		'marginLeft'=>0.967,    
+		'marginTop'=>10.7,        
+		'NX'=>2,    
+		'NY'=>10,    
+		'SpaceX'=>3.967,    
+		'SpaceY'=>0,    
+		'width'=>101.6,        
+		'height'=>25.4,        
+		'font-size'=>8),
+        '5162'=>array(
+		'name'=>'5162',    
+		'paper-size'=>'letter',    
+		'metric'=>'mm',    
+		'marginLeft'=>0.97,        
+		'marginTop'=>20.224,    
+		'NX'=>2,    
+		'NY'=>7,    
+		'SpaceX'=>4.762,    
+		'SpaceY'=>0,    
+		'width'=>100.807,    
+		'height'=>35.72,    
+		'font-size'=>8),
+        '5163'=>array(
+		'name'=>'5163',    
+		'paper-size'=>'letter',    
+		'metric'=>'mm',    
+		'marginLeft'=>1.762,    
+		'marginTop'=>10.7,         
+		'NX'=>2,    
+		'NY'=>5,    
+		'SpaceX'=>3.175,    
+		'SpaceY'=>0,    
+		'width'=>101.6,        
+		'height'=>50.8,        
+		'font-size'=>8),
+        '5164'=>array(
+		'name'=>'5164',    
+		'paper-size'=>'letter',    
+		'metric'=>'in',    
+		'marginLeft'=>0.148,    
+		'marginTop'=>0.5,         
+		'NX'=>2,    
+		'NY'=>3,    
+		'SpaceX'=>0.2031,    
+		'SpaceY'=>0,    
+		'width'=>4.0,        
+		'height'=>3.33,        
+		'font-size'=>12),
+        '8600'=>array(
+		'name'=>'8600',    
+		'paper-size'=>'letter',    
+		'metric'=>'mm',    
+		'marginLeft'=>7.1,         
+		'marginTop'=>19,         
+		'NX'=>3,     
+		'NY'=>10,     
+		'SpaceX'=>9.5,         
+		'SpaceY'=>3.1,     
+		'width'=>66.6,         
+		'height'=>25.4,        
+		'font-size'=>8),
+        'L7163'=>array(
+		'name'=>'L7163',  
+		'paper-size'=>'A4',        
+		'metric'=>'mm',    
+		'marginLeft'=>5,        
+		'marginTop'=>15,         
+		'NX'=>2,    
+		'NY'=>7,    
+		'SpaceX'=>25,        
+		'SpaceY'=>0,    
+		'width'=>99.1,        
+		'height'=>38.1,        
+		'font-size'=>9),
+        '6083'=>array(
+		'name'=>'6083' ,
+		'paper-size'=>'letter',
+		'metric'=>'mm',
+		'marginLeft'=>3.77,
+		'marginTop'=>12.5,
+		'NX'=>2,
+		'NY'=>5,
+		'SpaceX'=>0,
+		'SpaceY'=>5.16,
+		'width'=>101.6,
+		'height'=>48.8,
+		'font-size'=>9),
+        '6082'=>array(
+                'name'=>'6082',
+                'paper-size'=>'letter',
+                'metric'=>'mm',
+                'marginLeft'=>3.77,
+                'marginTop'=>17,
+                'NX'=>2,
+                'NY'=>7,
+                'SpaceX'=>0,
+                'SpaceY'=>5.16,
+                'width'=>101.6,
+                'height'=>31.4,
+                'font-size'=>9)
+        );
+
+/*        '6082'=>array(
+		'name'=>'6082',
+		'paper-size'=>'letter',
+		'metric'=>'mm',
+		'marginLeft'=>3.77,
+		'marginTop'=>12.5,
+		'NX'=>2,
+		'NY'=>7,
+		'SpaceX'=>0,
+		'SpaceY'=>5.16,
+		'width'=>101.6,
+		'height'=>31.9,
+		'font-size'=>9)
+	);
+*/
+
+    // convert units (in to mm, mm to in)
+    // $src and $dest must be 'in' or 'mm'
+    function _Convert_Metric ($value, $src, $dest) {
+        if ($src != $dest) {
+            $tab['in'] = 39.37008;
+            $tab['mm'] = 1000;
+            return $value * $tab[$dest] / $tab[$src];
+        } else {
+            return $value;
         }
-        else
-        {
-            $this->wPt=$this->fhPt;
-            $this->hPt=$this->fwPt;
-            $this->w=$this->fh;
-            $this->h=$this->fw;
-        }
-        $this->PageBreakTrigger=$this->h-$this->bMargin;
-        $this->CurOrientation=$orientation;
     }
+
+    // Give the height for a char size given.
+    function _Get_Height_Chars($pt) {
+        // Array matching character sizes and line heights
+        $_Table_Hauteur_Chars = array(6=>2, 7=>2.5, 8=>3, 9=>4, 10=>5, 11=>6, 12=>7, 13=>8, 14=>9, 15=>10);
+        if (in_array($pt, array_keys($_Table_Hauteur_Chars))) {
+            return $_Table_Hauteur_Chars[$pt];
+        } else {
+            return 100; // There is a prob..
+        }
+    }
+
+    function _Set_Format($format) {
+        $this->_Metric         = $format['metric'];
+        $this->_Avery_Name     = $format['name'];
+        $this->_Margin_Left    = $this->_Convert_Metric ($format['marginLeft'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Margin_Top    = $this->_Convert_Metric ($format['marginTop'], $this->_Metric, $this->_Metric_Doc);
+        $this->_X_Space     = $this->_Convert_Metric ($format['SpaceX'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Y_Space     = $this->_Convert_Metric ($format['SpaceY'], $this->_Metric, $this->_Metric_Doc);
+        $this->_X_Number     = $format['NX'];
+        $this->_Y_Number     = $format['NY'];
+        $this->_Width         = $this->_Convert_Metric ($format['width'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Height         = $this->_Convert_Metric ($format['height'], $this->_Metric, $this->_Metric_Doc);
+        $this->Set_Font_Size($format['font-size']);
+    }
+
+    // Constructor
+    function PDF_Label ($format, $unit='mm', $posX=1, $posY=1) {
+        if (is_array($format)) {
+            // Custom format
+            $Tformat = $format;
+        } else {
+            // Avery format
+            $Tformat = $this->_Avery_Labels[$format];
+        }
+
+        parent::FPDF('P', $Tformat['metric'], $Tformat['paper-size']);
+        $this->_Set_Format($Tformat);
+        $this->Set_Font_Name('Arial');
+        $this->SetMargins(0,0);
+        $this->SetAutoPageBreak(false);
+
+        $this->_Metric_Doc = $unit;
+        // Start at the given label position
+        if ($posX > 1) $posX--; else $posX=0;
+        if ($posY > 1) $posY--; else $posY=0;
+        if ($posX >=  $this->_X_Number) $posX =  $this->_X_Number-1;
+        if ($posY >=  $this->_Y_Number) $posY =  $this->_Y_Number-1;
+        $this->_COUNTX = $posX;
+        $this->_COUNTY = $posY;
+    }
+
+    // Sets the character size
+    // This changes the line height too
+    function Set_Font_Size($pt) {
+        if ($pt > 3) {
+            $this->_Char_Size = $pt;
+            $this->_Line_Height = $this->_Get_Height_Chars($pt);
+            $this->SetFontSize($this->_Char_Size);
+        }
+    }
+
+    // Method to change font name
+    function Set_Font_Name($fontname) {
+        if ($fontname != '') {
+            $this->_Font_Name = $fontname;
+            $this->SetFont($this->_Font_Name);
+        }
+    }
+
+    // Print a label
+    function Add_PDF_Label($texte) {
+        // We are in a new page, then we must add a page
+        if (($this->_COUNTX ==0) and ($this->_COUNTY==0)) {
+            $this->AddPage();
+        }
+
+        $_PosX = $this->_Margin_Left+($this->_COUNTX*($this->_Width+$this->_X_Space));
+        $_PosY = $this->_Margin_Top+($this->_COUNTY*($this->_Height+$this->_Y_Space));
+        $this->SetXY($_PosX+3, $_PosY+3);
+        $this->MultiCell($this->_Width, $this->_Line_Height, $texte);
+        $this->_COUNTY++;
+
+        if ($this->_COUNTY == $this->_Y_Number) {
+            // End of column reached, we start a new one
+            $this->_COUNTX++;
+            $this->_COUNTY=0;
+        }
+
+        if ($this->_COUNTX == $this->_X_Number) {
+            // Page full, we start a new one
+            $this->_COUNTX=0;
+            $this->_COUNTY=0;
+        }
+    }
+
 }
 
-function Header()
+/*-------------------------------------------------
+To create the object, 2 possibilities:
+either pass a custom format via an array
+or use a built-in AVERY name
+-------------------------------------------------*/
+
+// Example of custom format; we start at the second column
+//$pdf = new PDF_Label(array('name'=>'perso1', 'paper-size'=>'A4', 'marginLeft'=>1, 'marginTop'=>1, 'NX'=>2, 'NY'=>7, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>99.1, 'height'=>38.1, 'metric'=>'mm', 'font-size'=>14), 1, 2);
+// Standard format
+$pdf = new PDF_Label('6083', 'mm', 1, 1);
+
+
+
+$pdf->Open();
+//$pdf->AddPage();
+
+$quant = 43;
+
+$cont = 0;
+
+//Print labels
+for($i=1; $i <= $quant; $i++)
 {
-    global $maxY;
+   if($cont != 7)
+   {
+      $pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s", "Assemblia Legislativa do Estado da Paraba", '             Sistema de Protocolo - SIP', 'Processo Numero: 189 / 2004 ', "Pagina atual $i"));
 
-    // Check if header for this page already exists
-    if(!$this->headerset[$this->page]) {
-
-        foreach($this->tablewidths as $width) {
-            $fullwidth += $width;
-        }
-        $this->SetY(($this->tMargin) - ($this->FontSizePt/$this->k)*2);
-        $this->cellFontSize = $this->FontSizePt ;
-        $this->SetFont('Arial','',( ( $this->titleFontSize) ? $this->titleFontSize : $this->FontSizePt ));
-        $this->Cell(0,$this->FontSizePt,$this->titleText,0,1,'C');
-        $l = ($this->lMargin);
-        $this->SetFont('Arial','',$this->cellFontSize);
-        foreach($this->colTitles as $col => $txt) {
-            $this->SetXY($l,($this->tMargin));
-            $this->MultiCell($this->tablewidths[$col], $this->FontSizePt,$txt);
-            $l += $this->tablewidths[$col] ;
-            $maxY = ($maxY < $this->getY()) ? $this->getY() : $maxY ;
-        }
-        $this->SetXY($this->lMargin,$this->tMargin);
-        $this->setFillColor(200,200,200);
-        $l = ($this->lMargin);
-        foreach($this->colTitles as $col => $txt) {
-            $this->SetXY($l,$this->tMargin);
-            $this->cell($this->tablewidths[$col],$maxY-($this->tMargin),'',1,0,'L',1);
-            $this->SetXY($l,$this->tMargin);
-            $this->MultiCell($this->tablewidths[$col],$this->FontSizePt,$txt,0,'C');
-            $l += $this->tablewidths[$col];
-        }
-        $this->setFillColor(255,255,255);
-        // set headerset
-        $this->headerset[$this->page] = 1;
-    }
-
-    $this->SetY($maxY);
-}
-
-function Footer() {
-    // Check if footer for this page already exists
-    if(!$this->footerset[$this->page]) {
-        $this->SetY(-15);
-        //Page number
-        $this->Cell(0,10,'Página '.$this->PageNo().'/{nb}',0,0,'C');
-        // set footerset
-        $this->footerset[$this->page] = 1;
-    }
-}
-
-function morepagestable($lineheight=8) {
-    // some things to set and 'remember'
-    $l = $this->lMargin;
-    $startheight = $h = $this->GetY();
-    $startpage = $currpage = $this->page;
-
-    // calculate the whole width
-    foreach($this->tablewidths as $width) {
-        $fullwidth += $width;
-    }
-
-    // Now let's start to write the table
-    $row = 0;
-    while($data=mysql_fetch_row($this->results)) {
-        $this->page = $currpage;
-        // write the horizontal borders
-        $this->Line($l,$h,$fullwidth+$l,$h);
-        // write the content and remember the height of the highest col
-        foreach($data as $col => $txt) {
-
-            $this->page = $currpage;
-            $this->SetXY($l,$h);
-            $this->MultiCell($this->tablewidths[$col],$lineheight,$txt,0,$this->colAlign[$col]);
-
-            $l += $this->tablewidths[$col];
-
-            if($tmpheight[$row.'-'.$this->page] < $this->GetY()) {
-                $tmpheight[$row.'-'.$this->page] = $this->GetY();
-            }
-            if($this->page > $maxpage)
-                $maxpage = $this->page;
-            unset($data[$col]);
-        }
-        // get the height we were in the last used page
-        $h = $tmpheight[$row.'-'.$maxpage];
-        // set the "pointer" to the left margin
-        $l = $this->lMargin;
-        // set the $currpage to the last page
-        $currpage = $maxpage;
-        unset($data[$row]);
-        $row++ ;
-    }
-    // draw the borders
-    // we start adding a horizontal line on the last page
-    $this->page = $maxpage;
-    $this->Line($l,$h,$fullwidth+$l,$h);
-    // now we start at the top of the document and walk down
-    for($i = $startpage; $i <= $maxpage; $i++) {
-        $this->page = $i;
-        $l = $this->lMargin;
-        $t = ($i == $startpage) ? $startheight : $this->tMargin;
-        $lh = ($i == $maxpage) ? $h : $this->h-$this->bMargin;
-        $this->Line($l,$t,$l,$lh);
-        foreach($this->tablewidths as $width) {
-            $l += $width;
-            $this->Line($l,$t,$l,$lh);
-        }
-    }
-    // set it to the last page, if not it'll cause some problems
-    $this->page = $maxpage;
-}
-
-function connect($host='localhost',$username='',$password='',$db=''){
-    $this->conn = mysql_connect($host,$username,$password) or die( mysql_error() );
-    mysql_select_db($db,$this->conn) or die( mysql_error() );
-    return true;
-}
-
-function query($query){
-    $this->results = mysql_query($query,$this->conn);
-    $this->numFields = mysql_num_fields($this->results);
-}
-
-function mysql_report($query,$dump=false,$attr=array()){
-
-    foreach($attr as $key=>$val){
-        $this->$key = $val ;
-    }
-
-    $this->query($query);
-
-    // if column widths not set
-    if(!isset($this->tablewidths)){
-
-        // starting col width
-        $this->sColWidth = (($this->w-$this->lMargin-$this->rMargin))/$this->numFields;
-
-        // loop through results header and set initial col widths/ titles/ alignment
-        // if a col title is less than the starting col width / reduce that column size
-        for($i=0;$i<$this->numFields;$i++){
-            $stringWidth = $this->getstringwidth(mysql_field_name($this->results,$i)) + 6 ;
-            if( ($stringWidth) < $this->sColWidth){
-                $colFits[$i] = $stringWidth ;
-                // set any column titles less than the start width to the column title width
-            }
-            $this->colTitles[$i] = mysql_field_name($this->results,$i) ;
-            switch (mysql_field_type($this->results,$i)){
-                case 'int':
-                    $this->colAlign[$i] = 'R';
-                    break;
-                default:
-                    $this->colAlign[$i] = 'L';
-            }
-        }
-
-        // loop through the data, any column whose contents is bigger that the col size is
-        // resized
-        while($row=mysql_fetch_row($this->results)){
-            foreach($colFits as $key=>$val){
-                $stringWidth = $this->getstringwidth($row[$key]) + 6 ;
-                if( ($stringWidth) > $this->sColWidth ){
-                    // any col where row is bigger than the start width is now discarded
-                    unset($colFits[$key]);
-                }else{
-                    // if text is not bigger than the current column width setting enlarge the column
-                    if( ($stringWidth) > $val ){
-                        $colFits[$key] = ($stringWidth) ;
-                    }
-                }
-            }
-        }
-
-        foreach($colFits as $key=>$val){
-            // set fitted columns to smallest size
-            $this->tablewidths[$key] = $val;
-            // to work out how much (if any) space has been freed up
-            $totAlreadyFitted += $val;
-        }
-
-        $surplus = (sizeof($colFits)*$this->sColWidth) - ($totAlreadyFitted);
-        for($i=0;$i<$this->numFields;$i++){
-            if(!in_array($i,array_keys($colFits))){
-                $this->tablewidths[$i] = $this->sColWidth + ($surplus/(($this->numFields)-sizeof($colFits)));
-            }
-        }
-
-        ksort($this->tablewidths);
-
-        if($dump){
-            Header('Content-type: text/plain');
-            for($i=0;$i<$this->numFields;$i++){
-                if(strlen(mysql_field_name($this->results,$i))>$flength){
-                    $flength = strlen(mysql_field_name($this->results,$i));
-                }
-            }
-            switch($this->k){
-                case 72/25.4:
-                    $unit = 'millimeters';
-                    break;
-                case 72/2.54:
-                    $unit = 'centimeters';
-                    break;
-                case 72:
-                    $unit = 'inches';
-                    break;
-                default:
-                    $unit = 'points';
-            }
-            print "All measurements in $unit\n\n";
-            for($i=0;$i<$this->numFields;$i++){
-                printf("%-{$flength}s : %-10s : %10f\n",
-                    mysql_field_name($this->results,$i),
-                    mysql_field_type($this->results,$i),
-                    $this->tablewidths[$i] );
-            }
-            print "\n\n";
-            print "\$pdf->tablewidths=\n\tarray(\n\t\t";
-            for($i=0;$i<$this->numFields;$i++){
-                ($i<($this->numFields-1)) ?
-                print $this->tablewidths[$i].", /* ".mysql_field_name($this->results,$i)." */\n\t\t":
-                print $this->tablewidths[$i]." /* ".mysql_field_name($this->results,$i)." */\n\t\t";
-            }
-            print "\n\t);\n";
-            exit;
-        }
-
-    } else { // end of if tablewidths not defined
-
-        for($i=0;$i<$this->numFields;$i++){
-            $this->colTitles[$i] = mysql_field_name($this->results,$i) ;
-            switch (mysql_field_type($this->results,$i)){
-                case 'int':
-                    $this->colAlign[$i] = 'R';
-                    break;
-                default:
-                    $this->colAlign[$i] = 'L';
-            }
-        }
-    }
-
-    mysql_data_seek($this->results,0);
-    $this->Open();
-    $this->setY($this->tMargin);
-    $this->AddPage();
-    $this->morepagestable($this->FontSizePt);
-    $this->Output();
-}
+      $cont = $cont + 1;
+   }
+   else
+   {
+      for($x=1; $x <=7; $x++)
+         $pdf->Add_PDF_Label('');
+         
+      $cont = 0;
+   }
 
 }
 
-$pdf = new PDF('L','pt','A4');
-$pdf->SetFont('Arial','',11.5);
-$pdf->AliasNbPages();
-$pdf->connect($db_host,$user,$password,$database);
-$attr=array('titleFontSize'=>18,'titleText'=>'Censo Euskai Eskaut Taldea');
-$pdf->mysql_report($_POST['query'],false,$attr);
+$pdf->Output();
+?>
 ?>
