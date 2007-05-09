@@ -313,38 +313,33 @@ or use a built-in AVERY name
 -------------------------------------------------*/
 
 // Example of custom format; we start at the second column
-//$pdf = new PDF_Label(array('name'=>'perso1', 'paper-size'=>'A4', 'marginLeft'=>1, 'marginTop'=>1, 'NX'=>2, 'NY'=>7, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>99.1, 'height'=>38.1, 'metric'=>'mm', 'font-size'=>14), 1, 2);
+$pdf = new PDF_Label(array('name'=>'2x8_censo', 'paper-size'=>'A4', 'marginLeft'=>1, 'marginTop'=>1, 'NX'=>3, 'NY'=>8, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>99.1, 'height'=>38.1, 'metric'=>'mm', 'font-size'=>14), 1, 2);
 // Standard format
-$pdf = new PDF_Label('6083', 'mm', 1, 1);
+//$pdf = new PDF_Label('6083', 'mm', 1, 1);
 
 
 
 $pdf->Open();
 //$pdf->AddPage();
 
-$quant = 43;
+include 'lib/conexionbd.php';
 
-$cont = 0;
+$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM censo";
+$consulta = f_leer($sSql);
+$numFilas = mysql_num_rows($consulta);
+$fila = mysql_fetch_array($consulta);
 
 //Print labels
-for($i=1; $i <= $quant; $i++)
-{
-   if($cont != 7)
-   {
-      $pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s", "Assemblia Legislativa do Estado da Paraba", '             Sistema de Protocolo - SIP', 'Processo Numero: 189 / 2004 ', "Pagina atual $i"));
-
-      $cont = $cont + 1;
-   }
-   else
-   {
-      for($x=1; $x <=7; $x++)
-         $pdf->Add_PDF_Label('');
-         
-      $cont = 0;
-   }
-
+for($i=0; $i < $numFilas; $i++) {
+     	
+	$label = $fila['NOMBRE']." ".$fila['APELLIDOS'];
+	$label .= "\n";
+	$label .= $fila['DIRECCION'];
+ 
+	$pdf->Add_PDF_Label($label);
+	
+	$fila = mysql_fetch_array($consulta);
 }
 
 $pdf->Output();
-?>
 ?>
