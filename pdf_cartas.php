@@ -324,7 +324,7 @@ $pdf->Open();
 
 include 'lib/conexionbd.php';
 
-$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM censo";
+$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM census";
 $consulta = f_leer($sSql);
 $numFilas = mysql_num_rows($consulta);
 $fila = mysql_fetch_array($consulta);
