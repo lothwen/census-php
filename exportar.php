@@ -7,26 +7,28 @@ include 'lib/cab0.php';
 include 'lib/cab1.php';
 ?>
 <form action="pdf_cartas.php" method="post">
-<table align="center" width="30%" border="0">
+<table align="center" border="0">
 	<tr height="60"><td></td></tr>
 	<tr>
 		<td>Impresión de etiquetas para sobres.</td>
 	</tr>
 	<tr>
-		<table>
-		<tr>
-			<td>Rama: </td>
-			<td><select size="1" name="rama">
-				<option value="6">Todas</option>
-				<option value="1">Koskorrak</option>
-				<option value="2">Kaskondoak</option>
-				<option value="3">Oinarinak</option>
-				<option value="4">Azkarrak</option>
-				<option value="5">Trebeak</option>
-				<option value="0">Arduradunak</option>
-			</select></td>
-		</tr>
-		</table>
+		<td>
+			<table border="0">
+			<tr>
+				<td>Rama: </td>
+				<td><select size="1" name="rama">
+					<option value="6">Todas</option>
+					<option value="1">Koskorrak</option>
+					<option value="2">Kaskondoak</option>
+					<option value="3">Oinarinak</option>
+					<option value="4">Azkarrak</option>
+					<option value="5">Trebeak</option>
+					<option value="0">Arduradunak</option>
+				</select></td>
+			</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>
