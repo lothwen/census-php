@@ -46,3 +46,9 @@ input, select{
 .imagen{
 	border: 0;
 }
+
+a {
+	Text-Decoration: none;
+	color: #1b9fe3;
+	font-weight:bold;
+}
