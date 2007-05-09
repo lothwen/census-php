@@ -6,7 +6,6 @@ include 'lib/cab0.php';
 <?
 include 'lib/cab1.php';
 ?>
-<h2>Por hacer !</h2>
 <form action="pdf_cartas.php" method="post">
 <input type="hidden" name="query" value="SELECT ID,NOMBRE,APELLIDOS,RAMA FROM censo">
 <input type="submit" name="cartas" value="Exportar para cartas">
