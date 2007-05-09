@@ -313,7 +313,7 @@ or use a built-in AVERY name
 -------------------------------------------------*/
 
 // Example of custom format; we start at the second column
-$pdf = new PDF_Label(array('name'=>'2x8_censo', 'paper-size'=>'A4', 'marginLeft'=>1, 'marginTop'=>1, 'NX'=>3, 'NY'=>8, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>99.1, 'height'=>38.1, 'metric'=>'mm', 'font-size'=>14), 1, 1);
+$pdf = new PDF_Label(array('name'=>'2x8_censo', 'paper-size'=>'A4', 'marginLeft'=>1, 'marginTop'=>1, 'NX'=>3, 'NY'=>8, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>70, 'height'=>35, 'metric'=>'mm', 'font-size'=>12), 1, 1);
 // Standard format
 //$pdf = new PDF_Label('6083', 'mm', 1, 1);
 
@@ -325,7 +325,7 @@ $pdf->Open();
 include 'lib/conexionbd.php';
 
 $where = "";
-if ($_POST['rama']==6)
+if ($_POST['rama']!=6)
 	$where = "WHERE RAMA=".$_POST['rama'];	
 
 $sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM census $where";
