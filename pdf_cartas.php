@@ -354,5 +354,5 @@ for($i=0; $i < $numFilas; $i++) {
 	$fila = mysql_fetch_array($consulta);
 }
 
-$pdf->Output("labels_cartas.pdf");
+$pdf->Output("labels_cartas.pdf","I");
 ?>
