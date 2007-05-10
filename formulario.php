@@ -40,10 +40,11 @@ if($_POST){
 	include 'lib/conexionbd.php';
 	
 	//Con esta sentencia SQL, insertamos los datos en la bbdd
-	$sSql = "INSERT INTO census VALUES(NULL,'$_POST['nombre']',
-		'$_POST['apellidos']','$_POST['rama']','$_POST['direccion']','$_POST['pueblo']',
-		'$_POST['dni']','$_POST['ama']','$_POST['dni_ama']','$_POST['aita']',
-		'$_POST['dni_aita']','$_POST['telefono']','$_POST['movil']')";
+	$sSql = "INSERT INTO census VALUES(NULL,'{$_POST['nombre']}',
+               '{$_POST['apellidos']}','{$_POST['rama']}','{$_POST['direccion']}','{$_POST['pueblo']}',
+               '{$_POST['dni']}','{$_POST['ama']}','{$_POST['dni_ama']}','{$_POST['aita']}',
+               '{$_POST['dni_aita']}','{$_POST['telefono']}','{$_POST['movil']}')";
+	
 	f_ejecutar($sSql);
 
 	echo '<script>alert("Los datos han sido introducidos satisfactoriamente")</script>';

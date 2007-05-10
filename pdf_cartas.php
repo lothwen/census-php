@@ -341,12 +341,12 @@ for($i=0; $i < $numFilas; $i++) {
 	$label .= $fila['DIRECCION'];
  	$label .= "\n";
 	if (trim(strtolower($fila['PUEBLO'])) == "sestao"){	
-		$label .= "48910 Sestao"	
+		$label .= "48910 Sestao";	
 	}elseif (trim(strtolower($fila['PUEBLO'])) == "portugalete"){
-		$label .= "48920 Portugalete"
+		$label .= "48920 Portugalete";
 	}
 	
-	$label .= "\n"
+	$label .= "\n";
 	$label .= "Bizkaia";
 
 	$pdf->Add_PDF_Label($label);
