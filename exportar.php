@@ -8,9 +8,8 @@ include 'lib/cab1.php';
 ?>
 <form action="pdf_cartas.php" method="post">
 <table align="center" border="0">
-	<tr height="60"><td></td></tr>
 	<tr>
-		<td>Impresión de etiquetas para sobres.</td>
+		<td>Impresion de etiquetas para sobres.</td>
 	</tr>
 	<tr>
 		<td>
@@ -39,4 +38,4 @@ include 'lib/cab1.php';
 </form>
 <?
 include 'lib/footer.php';
-?>'
+?>
