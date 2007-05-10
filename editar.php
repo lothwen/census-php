@@ -50,9 +50,10 @@ if ($borrar){
 
 	// Actualizo todos los datos.
 	$sSql = "UPDATE census SET NOMBRE='$nombre', APELLIDOS='$apellidos', RAMA='$rama', DNI='$dni', AMA='$ama',";
-	$sSql .= "DNI_AMA='$dni_ama', AITA='$aita', DNI_AITA='$dni_aita', DIRECCION='$direccion', TELEFONO='$telefono', MOVIL='$movil' WHERE ID='$id'";
+	$sSql .= "DNI_AMA='$dni_ama', AITA='$aita', DNI_AITA='$dni_aita', DIRECCION='$direccion', PUEBLO='$pueblo', 
+	TELEFONO='$telefono', MOVIL='$movil' WHERE ID='$id'";
 	f_ejecutar($sSql);
-	
+
 	if($debug){
 		echo $sSql."<br>";
 		echo "Actualizando el chaval : ".$id;
@@ -142,6 +143,11 @@ if ($borrar){
 	<tr>
 	  <td>Dirección: </td>
 	  <td><input type="text" name="direccion" value="<?echo $fila['DIRECCION']?>" size="11"></td>
+	</tr>
+
+	<tr>
+	  <td>Pueblo: </td>
+	  <td><input type="text" name="pueblo" value="<?echo $fila['PUEBLO']?>"size="11"></td>
 	</tr>
 
 	<tr>

@@ -81,7 +81,11 @@ if(session_is_registered('query')){
 		  <td><input type="checkbox" name="direccion">Dirección</td>
 		  <td></td>
 		</tr>
-
+		
+		<tr>
+		  <td><input type="checkbox" name="pueblo">Pueblo</td>
+		  <td></td>
+		</tr>
 		<tr>
 		  <td><input type="checkbox" name="telefono">Teléfono</td>
 		  <td></td>
@@ -126,6 +130,8 @@ if($_POST['todos']){
 		$select = $select . "DNI_AITA,";
 	}if($_POST['direccion']){
 		$select = $select . "DIRECCION,";
+	}if($_POST['pueblo']){
+		$select = $select . "PUEBLO,";
 	}if($_POST['telefono']){
 		$select = $select . "TELEFONO,";
 	}if($_POST['movil']){

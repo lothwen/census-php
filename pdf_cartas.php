@@ -328,7 +328,7 @@ $where = "";
 if ($_POST['rama']!=6)
 	$where = "WHERE RAMA=".$_POST['rama'];	
 
-$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION FROM census $where";
+$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM census $where";
 $consulta = f_leer($sSql);
 $numFilas = mysql_num_rows($consulta);
 $fila = mysql_fetch_array($consulta);
@@ -339,7 +339,16 @@ for($i=0; $i < $numFilas; $i++) {
 	$label = $fila['NOMBRE']." ".$fila['APELLIDOS'];
 	$label .= "\n";
 	$label .= $fila['DIRECCION'];
- 
+ 	$label .= "\n";
+	if (trim(strtolower($fila['PUEBLO'])) == "sestao"){	
+		$label .= "48910 Sestao"	
+	}elseif (trim(strtolower($fila['PUEBLO'])) == "portugalete"){
+		$label .= "48920 Portugalete"
+	}
+	
+	$label .= "\n"
+	$label .= "Bizkaia";
+
 	$pdf->Add_PDF_Label($label);
 	
 	$fila = mysql_fetch_array($consulta);
