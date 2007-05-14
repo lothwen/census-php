@@ -103,7 +103,7 @@ if($_POST){
 
 	<tr>
 	  <td>Dirección: </td>
-	  <td><input type="text" name="direccion" size="30">C/</td>
+	  <td><input type="text" name="direccion" size="30" value="C/"></td>
 	</tr>
 
 	<tr>
