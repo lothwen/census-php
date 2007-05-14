@@ -83,7 +83,7 @@ if($_POST){
 
 	<tr>
 	  <td>Ama: </td>
-	  <td><input type="text" name="ama" size="11"></td>
+	  <td><input type="text" name="ama" size="30"></td>
 	</tr>
 
 	<tr>
@@ -93,7 +93,7 @@ if($_POST){
 
 	<tr>
 	  <td>Aita: </td>
-	  <td><input type="text" name="aita" size="11"></td>
+	  <td><input type="text" name="aita" size="30"></td>
 	</tr>
 
 	<tr>
@@ -103,12 +103,12 @@ if($_POST){
 
 	<tr>
 	  <td>Dirección: </td>
-	  <td><input type="text" name="direccion" size="11"></td>
+	  <td><input type="text" name="direccion" size="30">C/</td>
 	</tr>
 
 	<tr>
 	  <td>Pueblo: </td>
-	  <td><input type="text" name="pueblo" size="11" value="Sestao"></td>
+	  <td><input type="text" name="pueblo" size="15" value="Sestao"></td>
 	</tr>
 
 	<tr>
