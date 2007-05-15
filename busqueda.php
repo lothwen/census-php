@@ -186,7 +186,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if(!empty($_POST['apellidos_where'])){
 		$where .= $where . "APELLIDOS=\"" . trim($_POST['apellidos_where']) ."\" ";
 	}
-	if(!$_POST['rama_where'] == '6'){	
+	if(!($_POST['rama_where'] == '6')){	
 		$where .= $where . "RAMA=" . $_POST['rama_where'] . " ";
 	}
 	// Leo de la bbdd, solo los registros que forman esta pagina.
