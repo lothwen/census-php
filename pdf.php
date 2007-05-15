@@ -302,7 +302,7 @@ function mysql_report($query,$dump=false,$attr=array()){
 }
 
 $pdf = new PDF('L','pt','A4');
-$pdf->SetFont('Arial','',11.5);
+$pdf->SetFont('Arial','',9);
 $pdf->AliasNbPages();
 $pdf->connect($db_host,$user,$password,$database);
 $attr=array('titleFontSize'=>18,'titleText'=>'Censo Euskai Eskaut Taldea');
