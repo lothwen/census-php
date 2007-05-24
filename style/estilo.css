@@ -43,6 +43,10 @@ input, select{
         Text-Decoration: none;
 }
 
+input:hover {
+	background-color:white;
+} 
+
 .imagen{
 	border: 0;
 }
