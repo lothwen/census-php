@@ -2,7 +2,7 @@
 <table id="container" width="70%" align="center">
 
 <tr>
-	<td id="header" colspan="4"><a href="index.php"><img border="0" alt="logo.png" src="images/logo.png"></a></td>
+	<td id="header" colspan="4"><a href="index.php"><img border="0" alt="logo.png" src="images/cabecera.gif"></a></td>
 </tr>
 
 <tr>
