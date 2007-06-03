@@ -1,12 +1,13 @@
 <?
 include 'lib/cab0.php';
+include 'version.php';
 ?>
-<title>Euskai Census 1.0 : Portada</title>
+	<title>Euskai Census <?echo $version?> : Portada</title>
 </head>
 <?
 include 'lib/cab1.php';
 ?>
-<center><h2> Census v1.0 BETA</h2></center>
+	<center><h2> Census <?echo $version?></h2></center>
 
 <p>Esta es una versión en desarrollo de lo que será un herramienta muy útil para Euskai Eskaut Taldea.</p>
 
