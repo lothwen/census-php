@@ -1,8 +1,9 @@
 <?
 include 'lib/conexionbd.php';
 include 'lib/cab0.php';
+include 'version.php';
 ?>
-<title>Euskai Census v1.0 : Realizar una busqueda</title>
+	<title>Euskai Census <?echo $version?> : Realizar una busqueda</title>
 
 <script>
 function f_aceptar(){

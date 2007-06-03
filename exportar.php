@@ -1,7 +1,8 @@
 <?
 include 'lib/cab0.php';
+include 'version.php';
 ?>
-<title>Euskai Census v1.0 : Exportar datos</title>
+	<title>Euskai Census <?echo $version?> : Exportar datos</title>
 </head>
 <?
 include 'lib/cab1.php';

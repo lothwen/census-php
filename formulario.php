@@ -1,5 +1,6 @@
 <? 
 include 'lib/cab0.php';
+include 'version.php';
 ?>
 
 <script>
@@ -30,7 +31,7 @@ function f_aceptar(){
 }
 </script>
 
-<title>Euskai Census 1.0: Añadir nuevo chaval</title>
+	<title>Euskai Census <?echo $version?>: Añadir nuevo chaval</title>
 </head>
 <?
 include 'lib/cab1.php';
