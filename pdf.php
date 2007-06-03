@@ -1,7 +1,7 @@
 <?php
 session_start();
 define(FPDF_FONTPATH,'font/');
-require('lib/configuracion.php');
+require('lib/config.php');
 require('fpdf.php');
 
 class PDF extends FPDF {

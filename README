@@ -44,7 +44,7 @@ your terminal :
 
 To have census running you need a LAMP (Linux Apache Mysql PHP) 
 installation ready. Copy all files to your apache document root, 
-edit llib/configuracion.php to setup your mysql and ome various
+edit lib/config.php to setup your mysql and ome various
 vars like debugging. The next step is to create the needed database 
 and tables. I added a sql file in sql/ dir to only have to dump
 this file into mysql. You can do this by typing in your terminal:

@@ -1,5 +1,5 @@
 <?
-include 'configuracion.php';
+include 'config.php';
 
 function f_conectar(){
 	if (!($link=mysql_connect($GLOBALS["db_host"],$GLOBALS["user"],$GLOBALS["password"])))

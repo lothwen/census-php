@@ -1,7 +1,7 @@
 <?
 include 'lib/conexionbd.php';
 include 'lib/cab0.php';
-include 'lib/configuracion.php';
+include 'lib/config.php';
 ?>
 <title>Euskai Census v1.0 : Realizar una busqueda</title>
 </head>
