@@ -9,8 +9,6 @@ body{
 #container{border-collapse: separate;
 	border-spacing: 8px;
 	border-width: 1px;
-	font: normal 0.9em tahoma, arial, sans-serif;
-	color: #1b9fe3;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	background-color: white;
@@ -22,9 +20,15 @@ body{
 	border-style: dashed;
 	border-width: 1px;
 	font: normal 0.9em tahoma, arial, sans-serif;
+	color: #1b9fe3;
 }
 
-#content{}
+#content{
+	text-align: justify;
+	padding: 20px;
+	font: normal 0.8em tahoma, arial, sans-serif;
+	color: #1b9fe3;
+}
 
 #footer{background-color: #1b9fe3;
 	color: white;
