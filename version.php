@@ -1,3 +1,3 @@
 <?
-$version = "v1.0BETA"
+$version = "v1.0"
 ?>
