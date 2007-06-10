@@ -10,22 +10,40 @@ body{
 	border-collapse: separate;
 	border-spacing: 8px;
 	border-width: 1px;
+	padding: 10px;
 	margin-top: 25px;
 	margin-bottom: 25px;
+	margin-right: auto;
+	margin-left: auto;
 	background-color: white;
+	width: 70%;
 }
 
 #header{}
 
-.menu{
-	text-align: center;
-	border-style: dashed;
-	border-width: 1px;
+#navigation{
+	margin:0;
+	padding:0;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: #1b9fe3;
+	float: left;
+}
+
+#navigation ul{
+	list-style-type:none;
+	text-align:center;
+}
+
+#navigation ul li {
+	display:inline;
+	border-style: dashed;
+	border-width: 1px;
+	margin-right: 5px;
+	padding: 0px 10px 0px 10px;
 }
 
 #content{
+	clear: both;
 	text-align: justify;
 	padding: 20px;
 	font: normal 0.8em tahoma, arial, sans-serif;
