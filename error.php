@@ -14,27 +14,20 @@ include 'version.php';
 </head>
 
 <body>
-<table id="container" width="70%" align="center">
+<div id="container">
 
-<tr>
-	<td id="header" colspan="4"><a href="index.php"><img border="0" alt="cabecera" src="images/cabecera.gif"></a></td>
-</tr>
 
-<tr>
-	<td id="content" colspan="4">
-	<h1>ERROR DE ACCESO</h1>
+	<div id="header"><a href="index.php"><img border="0" alt="cabecera" src="images/cabecera.gif"></a></div>
 
-</td>
-</tr>
+	<div id="content">
+		<h1>ERROR DE ACCESO</h1>
+	</div>
 
-<tr>
-<td id="footer" colspan="4"><b>Euskai Eskaut Taldea  Census <?echo $version?> Licensed under the GNU GPL2 License</b><br>
-	    <a href="http://validator.w3.org/check?uri=referer"><img
-	    class="imagen" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>	
-	</td>
-</tr>
+	<div id="footer" colspan="4"><b>Euskai Eskaut Taldea  Census <?echo $version?> Licensed under the GNU GPL2 License</b><br>
+	    <a href="http://validator.w3.org/check?uri=referer">
+	    <img class="imagen" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>	
+</div>	
 
-</table>
-
+</div>
 </body>
 </html>
