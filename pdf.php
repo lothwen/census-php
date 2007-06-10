@@ -296,7 +296,8 @@ function mysql_report($query,$dump=false,$attr=array()){
     $this->setY($this->tMargin);
     $this->AddPage();
     $this->morepagestable($this->FontSizePt);
-    $this->Output();
+    $nombre = "censo" . date("d-m-y") . ".pdf";
+    $this->Output($nombre,"I");
 }
 
 }

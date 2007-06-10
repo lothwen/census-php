@@ -407,5 +407,6 @@ for($i=0; $i < $numFilas; $i++) {
 	$fila = mysql_fetch_array($consulta);
 }
 
-$pdf->Output("labels_cartas.pdf","I");
+$nombre = "etiquetas" . date("d-m-y") . ".pdf";
+$pdf->Output($nombre,"I");
 ?>
