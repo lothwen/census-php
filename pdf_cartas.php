@@ -340,7 +340,7 @@ if ($_POST['todos']) {
 			$where = "WHERE RAMA=2";
 			$primero = true;
 		}else{
-			$where .= "or RAMA=2";
+			$where .= " or RAMA=2";
 		}
 	}
 	
@@ -349,7 +349,7 @@ if ($_POST['todos']) {
 			$where = "WHERE RAMA=3";
 			$primero = true;
 		}else{
-			$where .= "or RAMA=3";
+			$where .= " or RAMA=3";
 		}
 	}
 	
@@ -358,7 +358,7 @@ if ($_POST['todos']) {
 			$where = "WHERE RAMA=4";
 			$primero = true;
 		}else{
-			$where .= "or RAMA=4";
+			$where .= " or RAMA=4";
 		}
 	}
 
@@ -367,7 +367,7 @@ if ($_POST['todos']) {
 			$where = "WHERE RAMA=5";
 			$primero = true;
 		}else{
-			$where .= "or RAMA=5";
+			$where .= " or RAMA=5";
 		}
 	}
 	
@@ -376,7 +376,7 @@ if ($_POST['todos']) {
 			$where = "WHERE RAMA=6";
 			$primero = true;
 		}else{
-			$where .= "or RAMA=6";
+			$where .= " or RAMA=6";
 		}
 	}
 }
