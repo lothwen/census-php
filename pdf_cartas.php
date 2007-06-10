@@ -332,7 +332,7 @@ if ($_POST['todos']) {
 	
 	if ($_POST['koskorrak']){
 		$where = "WHERE RAMA=1";
-		$primero = true
+		$primero = true;
 	}
 	
 	if ($_POST['kaskondoak']){
