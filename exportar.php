@@ -13,27 +13,35 @@ include 'lib/cab1.php';
 		<td>Impresion de etiquetas para sobres.</td>
 	</tr>
 	<tr>
-		<td>
-			<table border="0">
-			<tr>
-				<td>Rama: </td>
-				<td><select size="1" name="rama">
-					<option value="6">Todas</option>
-					<option value="1">Koskorrak</option>
-					<option value="2">Kaskondoak</option>
-					<option value="3">Oinarinak</option>
-					<option value="4">Azkarrak</option>
-					<option value="5">Trebeak</option>
-					<option value="0">Arduradunak</option>
-				</select></td>
-			</tr>
-			</table>
-		</td>
+		<td><input type="checkbox" name="todos">Todos</td>
 	</tr>
+
 	<tr>
-		<td>
-		<input type="submit" name="cartas" value="Exportar para cartas">
-		</td>
+		<td><input type="checkbox" name="koskorrak">Koskorrak</td>
+	</tr>
+
+	<tr>
+		<td><input type="checkbox" name="kaskondoak">Kaskondoak</td>
+	</tr>
+
+	<tr>
+		<td><input type="checkbox" name="oinarinak">Oinarinak</td>
+	</tr>
+
+	<tr>
+		<td><input type="checkbox" name="azkarrak">Azkarrak</td>
+	</tr>
+
+	<tr>
+		<td><input type="checkbox" name="trebeak">Trebeak</td>
+	</tr>
+	
+	<tr>
+		<td><input type="checkbox" name="arduradunak">Arduradunak</td>
+	</tr>
+	
+	<tr>
+		<td><input type="submit" name="cartas" value="Exportar para cartas"></td>
 	</tr>
 </table>
 </form>

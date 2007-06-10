@@ -324,9 +324,62 @@ $pdf->Open();
 
 include 'lib/conexionbd.php';
 
-$where = "";
-if ($_POST['rama']!=6)
-	$where = "WHERE RAMA=".$_POST['rama'];	
+// Formo la sentencia SQL
+if ($_POST['todos']) {
+	$where = "";
+}else{ 
+	$primero = false;
+	
+	if ($_POST['koskorrak']){
+		$where = "WHERE RAMA=1";
+		$primero = true
+	}
+	
+	if ($_POST['kaskondoak']){
+		if (!$primero){
+			$where = "WHERE RAMA=2";
+			$primero = true;
+		}else{
+			$where .= "or RAMA=2";
+		}
+	}
+	
+	if ($_POST['oinarinak']){
+		if (!$primero){
+			$where = "WHERE RAMA=3";
+			$primero = true;
+		}else{
+			$where .= "or RAMA=3";
+		}
+	}
+	
+	if ($_POST['azkarrak']){
+		if (!$primero){
+			$where = "WHERE RAMA=4";
+			$primero = true;
+		}else{
+			$where .= "or RAMA=4";
+		}
+	}
+
+	if ($_POST['trebeak']){
+		if (!$primero){
+			$where = "WHERE RAMA=5";
+			$primero = true;
+		}else{
+			$where .= "or RAMA=5";
+		}
+	}
+	
+	if ($_POST['arduradunak']){
+		if (!$primero){
+			$where = "WHERE RAMA=6";
+			$primero = true;
+		}else{
+			$where .= "or RAMA=6";
+		}
+	}
+}
 
 $sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM census $where";
 $consulta = f_leer($sSql);
