@@ -40,7 +40,8 @@ if (isset($_COOKIE['data'])) {
 	setcookie("data[2]",$username,time() + (60*60*24));
 	Header("Location: portada.php");
 } else {
-	if (!isset($HTTP_SERVER_VARS['PHP_AUTH_USER']) || $HTTP_SERVER_VARS['PHP_AUTH_USER']==null) {
+	//echo "hola: ".$_SERVER['PHP_AUTH_USER'];
+	if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
 		auth();
 
 	} else {
@@ -61,7 +62,7 @@ if (isset($_COOKIE['data'])) {
   			setcookie("data[0]",$storetime,time() + (60*60*24));
   			setcookie("data[l]",$counter,time() + (60*60*24));
   			setcookie("data[2]",$username,time() + (60*60*24));
-  			Header("Location: portada.php");
+			Header("Location: portada.php");
 		}
 	}
 }	
