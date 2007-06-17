@@ -37,7 +37,6 @@ if (isset($_COOKIE['data'])) {
 	$counter=++$_COOKIE['data[l]'];
 	setcookie("data[0]",$storetime,time() + (60*60*24));
 	setcookie("data[l]", $counter,time() + (60*60*24)); 
-	setcookie("data[2]",$username,time() + (60*60*24));
 	Header("Location: portada.php");
 } else {
 	//echo "hola: ".$_SERVER['PHP_AUTH_USER'];
@@ -59,9 +58,9 @@ if (isset($_COOKIE['data'])) {
 			auth();
 		}else{  
 			$counter=0;
-  			setcookie("data[0]",$storetime,time() + (60*60*24));
-  			setcookie("data[l]",$counter,time() + (60*60*24));
-  			setcookie("data[2]",$username,time() + (60*60*24));
+			setcookie("data[0]",$storetime,time() + (60*60*24));
+			setcookie("data[l]",$counter,time() + (60*60*24));
+			setcookie("data[2]",$_SERVER['PHP_AUTH_USER'],time() + (60*60*24));
 			Header("Location: portada.php");
 		}
 	}

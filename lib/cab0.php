@@ -4,8 +4,7 @@ session_start();
 //Validar si se ha logueado
 if (isset($_COOKIE['data'])) {
 	$counter=++$_COOKIE['data[l]'];
-	setcookie("data[0]",$storetime,time() + (60*60*24));
-	setcookie("data[l]", $counter,time() + (60*60*24)); setcookie("data[2]",$username,time() + (60*60*24));
+	setcookie("data[l]", $counter,time() + (60*60*24));
 } else {	
 	header("Location: error.php");				
 }

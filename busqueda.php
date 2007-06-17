@@ -207,7 +207,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if (@$row = mysql_fetch_array($result)){ 
 		$numCampos = mysql_num_fields($result);
 		$numFilas = mysql_num_rows($result);
-		echo "<center><table id=\"mi_tabla\">";
+		echo "<table class=\"mi_tabla\">";
 		
 		//Mostramos los nombres de las tablas
 		echo "<tr>";
@@ -237,7 +237,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 			echo "</tr>";
 			$row = mysql_fetch_array($result);
 		}
-		echo "</table></center>";
+		echo "</table>";
 	} else { 
 	echo "<script>alert(\"No se ha encontrado ningun registro !\")</script>";
 	
