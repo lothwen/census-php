@@ -30,7 +30,7 @@ while($row = mysql_fetch_array($result)){
 		$clase = "tr_impar";
 ?>
 	<tr class="<?echo $clase?>">
-		<td><a href="actividades2.php?id=<?echo $row['ID']?>"><?echo $row['NOMBRE']?></a></td>
+		<td><a href="actividades2.php?id=<?echo $row['ID']?>&abierta=<?echo $row['ACOMPANANTES']?>"><?echo $row['NOMBRE']?></a></td>
 		<td><?echo cambiaf_a_normal($row['FECHA'])?></td>
 		<td><a href="actividadesa.php?editar=<?echo $row['ID']?>"><img src="images/editar.png" border="0"></a>
 		    <a href="actividadesa.php?borrar=<?echo $row['ID']?>"><img src="images/borrar.png" border="0"></a></td>

@@ -9,10 +9,13 @@ include 'lib/utils.php';
 <?
 include 'lib/cab1.php';
 
-if (isset($_POST['cod_actividad'])) 
-	$codigo = $_POST['cod_actividad']; 
-else 
+if (isset($_POST['cod_actividad'])) {
+	$codigo = $_POST['cod_actividad'];
+	$abierta = $_POST['abierta'];
+} else { 
 	$codigo = $_GET['id'];
+	$abierta = $_GET['abierta'];
+}
 
 if ($nuevo){
 
@@ -48,6 +51,7 @@ while($row=mysql_fetch_array($result)){
 	</optgroup>
 </select>
 
+<? if ($abierta){ ?>
 <select name="num_acom">
 	<option>0</option>
 	<option>1</option>
@@ -57,8 +61,10 @@ while($row=mysql_fetch_array($result)){
 	<option>5</option>
 	<option>6</option>
 </select>
+<?}?>
 
 <input type="hidden" name="cod_actividad" value="<?echo $codigo?>">
+<input type="hidden" name="abierta" value="<?echo $abierta?>">
 <input type="submit" name="nuevo" value="Nuevo asistente">
 </form>
 <?
@@ -71,19 +77,24 @@ $numFilas = mysql_num_rows($result);
 
 if ($numFilas > 0){?>
 
+	<br>
 	<table class="tabla2" border="1">
 		<tr>
 			<th>Asistente</th>
-			<th>Nº de Acom.</th>
-		</tr>
-	<?while($row=mysql_fetch_array($result)){?>
-
-		<tr>
-			<td><?echo $row['NOMBRE']." ".$row['APELLIDOS']?></td>
-			<td><?echo $row['NUM_ACOM']?></td>
+			<? if($abierto) echo "<th>Nº de Acom.</th>";?>
 		</tr>
 	<?
-		$total_asistentes += $row['NUM_ACOM'] + 1;
+	while($row=mysql_fetch_array($result)){
+
+		echo "<tr>";
+			echo "<td>".$row['NOMBRE']." ". $row['APELLIDOS']."</td>";
+			if ($abierta){ 
+				echo "<td><".$row['NUM_ACOM']."</td>";
+				$total_asistentes += $row['NUM_ACOM'] + 1;
+			} else {
+				$total_asistentes++;
+			} 
+		echo "</tr>";
 	}
 	echo "</table>";
 	echo "<br>";
