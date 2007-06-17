@@ -9,11 +9,15 @@ include 'lib/utils.php';
 <?
 include 'lib/cab1.php';
 
+if (isset($_POST['cod_actividad'])) 
+	$codigo = $_POST['cod_actividad']; 
+else 
+	$codigo = $_GET['id'];
+
 if ($nuevo){
 
-	$sSql = "INSERT INTO actividadChaval VALUES('','".$_POST['cod_actividad']."','".$_POST['asistente']."','".$_POST['num_acom']."')";
+	$sSql = "INSERT INTO actividadChaval VALUES('','".$cod_actividad."','".$_POST['asistente']."','".$_POST['num_acom']."')";
 	f_ejecutar($sSql);
-f_error($sSql);
 }
 ?>
 
@@ -54,13 +58,13 @@ while($row=mysql_fetch_array($result)){
 	<option>6</option>
 </select>
 
-<input type="hidden" name="cod_actividad" value="<?echo $_POST['id'];echo $_GET['id']?>">
+<input type="hidden" name="cod_actividad" value="<?echo $codigo?>">
 <input type="submit" name="nuevo" value="Nuevo asistente">
 </form>
 <?
 $sSql = "SELECT actividadChaval.NUM_ACOM, census.NOMBRE, census.APELLIDOS ";
 $sSql .= "FROM  actividadChaval,census ";
-$sSql .= "WHERE actividadChaval.COD_CHAVAL = census.ID AND COD_ACTIVIDAD='".$_GET['id']."'";
+$sSql .= "WHERE actividadChaval.COD_CHAVAL = census.ID AND COD_ACTIVIDAD='".$codigo."'";
 
 $result = f_leer($sSql);
 $numFilas = mysql_num_rows($result);
