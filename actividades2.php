@@ -52,15 +52,15 @@ while($row=mysql_fetch_array($result)){
 </select>
 
 <? if ($abierta){ ?>
-<select name="num_acom">
-	<option>0</option>
-	<option>1</option>
-	<option>2</option>
-	<option>3</option>
-	<option>4</option>
-	<option>5</option>
-	<option>6</option>
-</select>
+	<select name="num_acom">
+		<option>0</option>
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+	</select>
 <?}?>
 
 <input type="hidden" name="cod_actividad" value="<?echo $codigo?>">
@@ -81,7 +81,7 @@ if ($numFilas > 0){?>
 	<table class="tabla2" border="1">
 		<tr>
 			<th>Asistente</th>
-			<? if($abierto) echo "<th>Nº de Acom.</th>";?>
+			<? if($abierta) echo "<th>Nº de Acom.</th>";?>
 		</tr>
 	<?
 	while($row=mysql_fetch_array($result)){
