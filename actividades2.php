@@ -17,9 +17,8 @@ if (isset($_POST['cod_actividad'])) {
 	$abierta = $_GET['abierta'];
 }
 
-if ($nuevo){
-
-	$sSql = "INSERT INTO actividadChaval VALUES('','".$cod_actividad."','".$_POST['asistente']."','".$_POST['num_acom']."')";
+if (isset($_POST['nuevo'])){
+	$sSql = "INSERT INTO actividadChaval VALUES('','".$codigo."','".$_POST['asistente']."','".$_POST['num_acom']."')";
 	f_ejecutar($sSql);
 }
 ?>
