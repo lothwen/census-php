@@ -167,7 +167,7 @@ if(session_is_registered('query')){
 }
 
 //Si no hay ningun criterio seleccionado, ejecuta la sentencia sin where
-elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_POST['rama_where'] == '6'){
+elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_POST['rama_where'] == '0'){
 
 	// Leo de la bbdd, solo los registros que forman esta pagina.
 	$query = "SELECT ".$select."FROM census"; 
