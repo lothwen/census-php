@@ -373,10 +373,10 @@ if ($_POST['todos']) {
 	
 	if ($_POST['arduradunak']){
 		if (!$primero){
-			$where = "WHERE RAMA=0";
+			$where = "WHERE RAMA=6";
 			$primero = true;
 		}else{
-			$where .= " or RAMA=0";
+			$where .= " or RAMA=6";
 		}
 	}
 }

@@ -37,13 +37,13 @@ if(session_is_registered('query')){
 		<tr>
 		  <td><input type="checkbox" name="apellidos">Apellidos</td>
 		   <td>Rama: <select size="1" name="rama_where">
-                        <option value="6">Todas</option>
+                        <option value="0">Todas</option>
 			<option value="1">Koskorrak</option>
                 	<option value="2">Kaskondoak</option>
                 	<option value="3">Oinarinak</option>
                 	<option value="4">Azkarrak</option>
                 	<option value="5">Trebeak</option>
-                	<option value="0">Arduradunak</option>
+                	<option value="6">Arduradunak</option>
         	   </select></td>
 
 		</tr>
@@ -187,7 +187,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 	if(!empty($_POST['apellidos_where'])){
 		$where .= $where . "APELLIDOS=\"" . trim($_POST['apellidos_where']) ."\" ";
 	}
-	if(!($_POST['rama_where'] == '6')){	
+	if(!($_POST['rama_where'] == '0')){	
 		$where .= $where . "RAMA=" . $_POST['rama_where'] . " ";
 	}
 	// Leo de la bbdd, solo los registros que forman esta pagina.

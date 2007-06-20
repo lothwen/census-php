@@ -73,7 +73,7 @@ if($_POST){
 		<option value="3">Oinarinak</option>
 		<option value="4">Azkarrak</option>
 		<option value="5">Trebeak</option>
-		<option value="0">Arduradunak</option>
+		<option value="6">Arduradunak</option>
 	</select></td>
 	</tr>
 

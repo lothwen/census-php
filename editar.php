@@ -112,7 +112,7 @@ if ($borrar){
 		<option value="3" <?echo $rama3?>>Oinarinak</option>
 		<option value="4" <?echo $rama4?>>Azkarrak</option>
 		<option value="5" <?echo $rama5?>>Trebeak</option>
-		<option value="0" <?echo $rama0?>>Arduradunak</option>
+		<option value="6" <?echo $rama0?>>Arduradunak</option>
 	</select></td>
 	</tr>
 

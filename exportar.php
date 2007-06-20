@@ -59,10 +59,7 @@ while($row = mysql_fetch_array($result))
         <tr>
                 <th>Rama</td>
                 <th>Total</td>
-        </tr>   
-                <td>Arduradunak</td>
-                <td><?echo $total_ramas[0]?></td>
-        </tr>   
+        </tr>      
         <tr>
                 <td>Koskorrak</td>
                 <td><?echo $total_ramas[1]?></td>
@@ -82,7 +79,11 @@ while($row = mysql_fetch_array($result))
         <tr>
                 <td>Trebeak</td>
                 <td><?echo $total_ramas[5]?></td>
-        </tr>   
+        </tr>
+	<tr>
+		<td>Arduradunak</td>
+                <td><?echo $total_ramas[0]?></td>
+        </tr>
 </table>
 
 <form action="pdf.php" method="post">
