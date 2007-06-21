@@ -1,73 +1,80 @@
 body{
-	background-color: white;
-	background-image: url('img/fondo.png');
+	background-color: black;
+	background-image: url('img/fondo.gif');
 	background-repeat: repeat-x;
 	background-attachment: fixed;
 	
 }
 
 #container{
-	border-collapse: separate;
-	border-spacing: 8px;
-	border-width: 1px;
-	padding: 10px;
+	padding: 0px;
 	margin-top: 25px;
 	margin-bottom: 25px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: white;
+	background-color: transparent;
 	width: 70%;
 }
 
-#header{}
-
-
+#header{
+	visibility: hidden;
+}
 
 #content{
-	text-align: justify;
-	padding: 20px;
-	font: normal 0.8em tahoma, arial, sans-serif;
-	color: #1b9fe3;
+	
+	
 }
 
 #navigation{
-	margin: 0;
-	/*background-color: red;*/
-	height: 30px;
-	padding:0;
+	float: left;
+	margin:0;
+	width:30%;
+	padding:5px;
 	font: normal 0.9em tahoma, arial, sans-serif;
-	color: #1b9fe3;
+	color: white;
+	background-color: #3b3b3b;
 }
 
 #navigation ul{
 	list-style-type:none;
+	margin-left: 0px;
 	padding:0px;
-	text-align:center;
+	text-align:left;
 }
 
 #navigation ul li {
-	display:inline;
-	border-style: dashed;
 	border-width: 1px;
+	border: 2px, solid white;
 	margin-right: 5px;
-	padding: 0px 10px 0px 10px;
+	padding: 5px;
 }
-#body {
-	margin-top: 25px;
-}
-#footer{
-	background-color: #1b9fe3;
+
+#body{
+	padding: 5px;
+	margin-left:33%;
+	text-align: justify;
+	padding: 0px;
+	font: normal 0.8em tahoma, arial, sans-serif;
 	color: white;
+	background-color: #3b3b3b;
+}
+
+#footer{
+	padding: 10px;
+	margin-top: 20px;
 	text-align: center;
 	font: normal 0.9em tahoma, arial, sans-serif;
+	color: white;
+	background-color: #3b3b3b;
+	/*background: transparent url(img/com_tl_odd.gif) no-repeat scroll left top;*/
 }
 
 input, select{
         margin-bottom:3px;
-        border: 1px solid #1b9fe3;
+        border: 1px solid grey;
         padding:3px;
         font-family: tahoma, arial, sans-serif;
-        color: #1b9fe3;
+        color: black;
         font-size: 10px;
         font-weight:bold;
         text-Decoration: none;
@@ -83,6 +90,11 @@ input:hover {
 
 a {
 	text-Decoration: none;
-	color: #1b9fe3;
+	color: white;
+	font-weight:bold;
+}
+
+a:hover {
+	color: #3b3b3b;
 	font-weight:bold;
 }
