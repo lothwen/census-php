@@ -21,12 +21,22 @@ body{
 
 #header{}
 
+
+
+#content{
+	text-align: justify;
+	padding: 20px;
+	font: normal 0.8em tahoma, arial, sans-serif;
+	color: #1b9fe3;
+}
+
 #navigation{
-	margin:0;
+	margin: 0;
+	/*background-color: red;*/
+	height: 30px;
 	padding:0;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: #1b9fe3;
-	float: left;
 }
 
 #navigation ul{
@@ -41,15 +51,9 @@ body{
 	margin-right: 5px;
 	padding: 0px 10px 0px 10px;
 }
-
-#content{
-	clear: both;
-	text-align: justify;
-	padding: 20px;
-	font: normal 0.8em tahoma, arial, sans-serif;
-	color: #1b9fe3;
+#body {
+	margin-top: 25px;
 }
-
 #footer{
 	background-color: #1b9fe3;
 	color: white;
