@@ -50,10 +50,9 @@ body{
 }
 
 #body{
-	padding: 5px;
+	padding: 20px;
 	margin-left:33%;
 	text-align: justify;
-	padding: 0px;
 	font: normal 0.8em tahoma, arial, sans-serif;
 	color: white;
 	background-color: #3b3b3b;
