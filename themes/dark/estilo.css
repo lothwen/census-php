@@ -13,7 +13,7 @@ body{
 	margin-right: auto;
 	margin-left: auto;
 	background-color: transparent;
-	width: 70%;
+	width: 90%;
 }
 
 #header{
@@ -28,7 +28,7 @@ body{
 #navigation{
 	float: left;
 	margin:0;
-	width:30%;
+	width:25%;
 	padding:5px;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: white;
@@ -51,7 +51,7 @@ body{
 
 #body{
 	padding: 20px;
-	margin-left:33%;
+	margin-left:28%;
 	text-align: justify;
 	font: normal 0.8em tahoma, arial, sans-serif;
 	color: white;
@@ -61,6 +61,7 @@ body{
 #footer{
 	padding: 10px;
 	margin-top: 20px;
+	margin-left:28%;
 	text-align: center;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: white;
