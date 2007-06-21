@@ -217,7 +217,7 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 		}
 		echo "<form action=pdf.php method=post>";
 		echo "<input name='sentencia' type=hidden value='".$query."'>";
-		echo "<th class=\"cab_tabla\"><input class=\"imagen\" type=\"image\" name=\"generar\" src=\"images/pdf-icon.gif\" /></th>";
+		echo "<th class=\"cab_tabla\"><input class=\"imagen\" type=\"image\" name=\"generar\" src=\"".$THEMEDIR."/img/pdf-icon.gif\" /></th>";
 		echo "</form>";
 		echo "</tr>"; 
 		
@@ -231,8 +231,8 @@ elseif(empty($_POST['nombre_where']) && empty($_POST['apellidos_where']) && $_PO
 				echo "<td>".$row[$j]."</td>";
 			}
 			
-			echo "<td><a href=\"editar.php?borrar=$row[0]\"><img src=\"images/borrar.png\" border=0/></a>
-					 <a href=\"editar.php?id=$row[0]\"><img src=\"images/editar.png\" border=0/></a>
+			echo "<td><a href=\"editar.php?borrar=$row[0]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>
+					 <a href=\"editar.php?id=$row[0]\"><img src=\"".$THEMEDIR."/img/editar.png\" border=0/></a>
 			</td>";
 			echo "</tr>";
 			$row = mysql_fetch_array($result);

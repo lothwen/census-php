@@ -24,5 +24,5 @@ encuentran siempre accesibles y centralizados. Con esto evitamos el tener copias
 
 <p> Si quieres visitar la pagina web del grupo, deberas dirigirte a <a href="http://euskai.org">http://euskai.org</a></p>
 
-<center><img alt="flor-lis.png" src="images/flor-lis.png"></center>
+<center><img alt="flor-lis.png" src="<?echo $THEMEDIR?>/img/flor-lis.png"></center>
 <?include 'lib/footer.php'?>

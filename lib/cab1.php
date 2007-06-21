@@ -2,7 +2,7 @@
 <div id="container">
 
 	<div id="header">
-		<a href="index.php"><img border="0" alt="Cabacera" src="images/cabecera.gif"></a>
+		<a href="index.php"><img border="0" alt="Cabacera" src="<?echo $THEMEDIR?>/img/cabecera.gif"></a>
 	</div>
 
 

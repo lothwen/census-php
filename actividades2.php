@@ -88,7 +88,7 @@ if ($numFilas > 0){?>
 		echo "<tr>";
 			echo "<td>".$row['NOMBRE']." ". $row['APELLIDOS']."</td>";
 			if ($abierta){ 
-				echo "<td><".$row['NUM_ACOM']."</td>";
+				echo "<td>".$row['NUM_ACOM']."</td>";
 				$total_asistentes += $row['NUM_ACOM'] + 1;
 			} else {
 				$total_asistentes++;

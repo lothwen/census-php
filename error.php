@@ -9,15 +9,15 @@ include 'version.php';
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<title>Euskai Census v1.0</title>
-	<link rel="STYLESHEET" href="style/estilo.css" type="text/css">
-	<link rel="STYLESHEET" href="style/estilo-tabla.css" type="text/css">
+	<link rel="STYLESHEET" href="themes/default/estilo.css" type="text/css">
+	<link rel="STYLESHEET" href="themes/default/estilo-tabla.css" type="text/css">
 </head>
 
 <body>
 <div id="container">
 
 
-	<div id="header"><a href="index.php"><img border="0" alt="cabecera" src="images/cabecera.gif"></a></div>
+	<div id="header"><a href="index.php"><img border="0" alt="cabecera" src="themes/default/img/cabecera.gif"></a></div>
 
 	<div id="content">
 		<h1>ERROR DE ACCESO</h1>
