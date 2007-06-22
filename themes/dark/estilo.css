@@ -65,13 +65,12 @@ body{
 	text-align: center;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: white;
-	background-color: #3b3b3b;
-	/*background: transparent url(img/com_tl_odd.gif) no-repeat scroll left top;*/
+	background:#3B3B3B url(img/com_br_odd.gif) no-repeat scroll right bottom;
 }
 
 input, select{
         margin-bottom:3px;
-        border: 1px solid grey;
+        border: 2px solid grey;
         padding:3px;
         font-family: tahoma, arial, sans-serif;
         color: black;
@@ -95,6 +94,7 @@ a {
 }
 
 a:hover {
-	color: #3b3b3b;
+	/*color: #3b3b3b;*/
+	Text-Decoration: underline;
 	font-weight:bold;
 }
