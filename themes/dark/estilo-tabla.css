@@ -5,8 +5,8 @@
 	font: normal 0.9em tahoma, arial, sans-serif;
 	line-height: 1.4em;
 	border-collapse: collapse;
-	border: 4px solid #ADBBCA;
-	color: #4F6480;
+	border: 1px solid white;
+	color: white;
 	background: #F0F0F0;
 }
 
@@ -14,25 +14,27 @@
 	color: #fff;
 	background: #5E7796;
 	padding: 4px 8px 4px 8px;
-	border: 4px solid #ADBBCA;
+	border: 1px solid #white;
 }
 
 .tr_par	{
-	background: #E9ECEE;
-	border: 4px solid #ADBBCA;
+	padding-left: 5px;
+	background: grey;
+	border: 1px solid white;
 }
 
 .tr_impar	{
-	background: #F0F0F0;
-	border: 4px solid #ADBBCA;
+	padding-left: 5px;
+	background: grey;
+	border: 1px solid white;
 }
 		
 .tr_par:hover	{
-	background: #fff;
+	background: black;
 }
 
 .tr_impar:hover	{
-	background: #fff;
+	background: black;
 }
 
 /*TABLA 2*/
@@ -42,6 +44,6 @@
 	padding: 0px;
 	font: normal 0.9em tahoma, arial, sans-serif;
 	border-collapse: collapse;
-	border: 1px solid #ADBBCA;
-	color: #4F6480;
+	border: 1px solid white;
+	color: white;
 }
