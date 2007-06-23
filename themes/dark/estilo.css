@@ -2,7 +2,7 @@ body{
 	background-color: black;
 	background-image: url('img/fondo.gif');
 	background-repeat: repeat-x;
-	
+	text-align: center;
 	
 }
 
@@ -66,6 +66,12 @@ body{
 	font: normal 0.9em tahoma, arial, sans-serif;
 	color: white;
 	background:#3B3B3B url(img/com_br_odd.gif) no-repeat scroll right bottom;
+}
+
+.center{
+	text-align: left;
+	margin: 0 auto;
+	width: 200px;
 }
 
 input, select{

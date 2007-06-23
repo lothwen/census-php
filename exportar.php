@@ -8,8 +8,9 @@ include 'lib/conexionbd.php';
 <?
 include 'lib/cab1.php';
 ?>
+<div class="center">
 <form action="pdf_cartas.php" method="post">
-<table align="center" border="0">
+<table border="0">
 	<tr>
 		<td>Impresion de etiquetas para sobres.</td>
 	</tr>
@@ -54,8 +55,8 @@ while($row = mysql_fetch_array($result))
         $total_ramas[] = $row[0];
 
 ?>
-
-<table align="center" border="0">
+<br><br>
+<table border="0">
         <tr>
                 <th>Rama</td>
                 <th>Total</td>
@@ -88,8 +89,9 @@ while($row = mysql_fetch_array($result))
 
 <form action="pdf.php" method="post">
         <input type="hidden" name="sentencia" value="SELECT * FROM censo">
-        <center><input type="submit" name="generar" value="Exportar Censo en formato pdf"></center>
+        <input type="submit" name="generar" value="Exportar Censo en formato pdf">
 </form>
+</div>
 
 <?
 include 'lib/footer.php';
