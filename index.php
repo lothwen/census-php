@@ -1,12 +1,12 @@
 <?
 function auth (){
+  setcookie("hola", "123456",time() + (60*60*24)); 
   Header("WWW-Authenticate: Basic realm=\"Census: Euskai Eskaut Taldea\"");
   Header("HTTP/1.0 401 Unauthorized");
   include("error.php"); 
   
   exit;
 }
-
 include('lib/conexionbd.php');
 
 $now = getdate();
@@ -40,7 +40,8 @@ if (isset($_COOKIE['data'])) {
 	Header("Location: portada.php");
 } else {
 	//echo "hola: ".$_SERVER['PHP_AUTH_USER'];
-	if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
+	//if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
+	if ($_COOKIE['hola'] != true){
 		auth();
 
 	} else {

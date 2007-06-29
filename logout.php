@@ -4,17 +4,23 @@
 setcookie("data[0]");
 setcookie("data[l]"); 
 setcookie("data[2]");
+setcookie("hola");
 
 //Borro las variables (no funciona)
 unset($_SERVER['PHP_AUTH_USER']);
 unset($_SERVER['PHP_AUTH_PW']);
 
+session_unregister($validacion);
 //Redirigo a la web principal
 //header("Location: index.php");
 
 
 include 'version.php';
+
+include 'lib/config.php';
+$THEMEDIR = 'themes/'.$theme;
 ?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -23,15 +29,15 @@ include 'version.php';
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<title>Euskai Census v1.0</title>
-	<link rel="STYLESHEET" href="style/estilo.css" type="text/css">
-	<link rel="STYLESHEET" href="style/estilo-tabla.css" type="text/css">
+	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/estilo.css" type="text/css">
+	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/estilo-tabla.css" type="text/css">
 </head>
 
 <body>
 <div id="container">
 
 
-	<div id="header"><a href="index.php"><img border="0" alt="cabecera" src="images/cabecera.gif"></a></div>
+	<div id="header"><a href="index.php"><img border="0" alt="cabecera" src="<?echo $THEMEDIR?>/cabecera.gif"></a></div>
 
 	<div id="content" style="text-align: center">
 		<h1>Se ha desconectado</h1>
