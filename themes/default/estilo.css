@@ -1,8 +1,8 @@
 body{
-	background-color: white;
+	background-color: #42AFDC;
 	background-image: url('img/main-bg.jpg');
-	background-repeat: repeat-x;
-	background-attachment: fixed;
+	background-attachment: fixed; 
+	background-repeat: repeat-x ;
 	
 }
 
