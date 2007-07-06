@@ -32,7 +32,7 @@ include 'lib/cab0.php';
 include 'version.php';
 ?>
 	<title>Euskai Census <?echo $version?> : Nueva actividad</title>
-	<link href="style/calendar.css" media=all rel=stylesheet title=win2k-cold-1 type=text/css>
+	<link href="<?echo $THEMEDIR?>/calendar.css" media=all rel=stylesheet title=win2k-cold-1 type=text/css>
 	<script src="lib/calendar.js" type=text/javascript></script>
 	<script src="lib/calendar-es.js" type=text/javascript></script>
 	<script src="lib/calendar-setup.js" type=text/javascript></script>
@@ -75,9 +75,9 @@ if ($editar){
 		<td></td>
 		<?if ($editar){
 			echo "<input type=\"hidden\" name=\"id\" value=\"".$row['ID']."\">";
-			echo "<td align=\"right\"><input type=\"submit\" name=\"actualizar\" value=\"Actualizar Actividad\"></td>";
+			echo "<td align=\"right\"><input class=\"button\"type=\"submit\" name=\"actualizar\" value=\"Actualizar Actividad\"></td>";
 		}else{
-			echo "<td align=\"right\"><input type=\"submit\" name=\"nuevo\" value=\"Nueva Actividad\"></td>";
+			echo "<td align=\"right\"><input class=\"button\"type=\"submit\" name=\"nuevo\" value=\"Nueva Actividad\"></td>";
 		}?>
 		</tr>
 		</table>

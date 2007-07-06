@@ -79,9 +79,16 @@ input, select{
         text-Decoration: none;
 }
 
-input .button {
-	background: white
+input.button {
+	background: white;
+	border: 1px solid #1b9fe3;
+        padding:2px 7px 2px 7px;
 }
+
+input.button:hover {
+	background: #efebe7;
+}
+
 .imagen{
 	border: 0;
 }

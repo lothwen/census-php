@@ -43,7 +43,7 @@ include 'lib/cab1.php';
 	</tr>
 	
 	<tr>
-		<td><input type="submit" name="cartas" value="Exportar para cartas"></td>
+		<td><input class="button" type="submit" name="cartas" value="Exportar para cartas"></td>
 	</tr>
 </table>
 </form>
@@ -89,7 +89,7 @@ while($row = mysql_fetch_array($result))
 
 <form action="pdf.php" method="post">
         <input type="hidden" name="sentencia" value="SELECT * FROM censo">
-        <input type="submit" name="generar" value="Exportar Censo en formato pdf">
+        <input class="button" type="submit" name="generar" value="Exportar Censo en formato pdf">
 </form>
 </div>
 

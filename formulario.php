@@ -123,8 +123,8 @@ if($_POST){
 	</tr>
 
 	<tr>
-	  <td><input type="button" onClick="f_aceptar()" value="Insertar nuevo chaval/a" name="enviar"></td>
-	  <td><input type="reset" value="Restablecer" name="resetear"></td>
+	  <td><input class="button" type="button" onClick="f_aceptar()" value="Insertar nuevo chaval/a" name="enviar"></td>
+	  <td><input class="button" type="reset" value="Restablecer" name="resetear"></td>
 	</tr>
 
   </table>

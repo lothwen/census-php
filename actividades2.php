@@ -64,7 +64,7 @@ while($row=mysql_fetch_array($result)){
 
 <input type="hidden" name="cod_actividad" value="<?echo $codigo?>">
 <input type="hidden" name="abierta" value="<?echo $abierta?>">
-<input type="submit" name="nuevo" value="Nuevo asistente">
+<input class="button" type="submit" name="nuevo" value="Nuevo asistente">
 </form>
 <?
 $sSql = "SELECT actividadChaval.NUM_ACOM, census.NOMBRE, census.APELLIDOS ";

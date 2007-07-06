@@ -98,8 +98,8 @@ if(session_is_registered('query')){
 		</tr>
 
 		<tr>
-          	  <td align="right"><input type="submit" value="Buscar" name="enviar"></td>
-          	  <td><input type="reset" value="Restablecer" name="resetear"></td>
+          	  <td align="right"><input class="button" type="submit" value="Buscar" name="enviar"></td>
+          	  <td><input class="button" type="reset" value="Restablecer" name="resetear"></td>
         	</tr>
 
 	</table>

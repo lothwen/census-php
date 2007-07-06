@@ -3,7 +3,7 @@ session_start();
 
 //Validar si se ha logueado
 if (!isset($_COOKIE['sessionid']))
-	header("Location: error.php");				
+//	header("Location: error.php");				
 
 include 'lib/config.php';
 $THEMEDIR = 'themes/'.$theme;

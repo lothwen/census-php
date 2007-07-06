@@ -38,7 +38,7 @@ while($row = mysql_fetch_array($result)){
 <?}?>
 
 </table>
-		<br><center><input type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
+		<br><center><input class="button" type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
 
 
 
