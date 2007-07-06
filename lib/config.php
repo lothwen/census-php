@@ -10,7 +10,7 @@
 	//Numero de registros por pagina en los resultados de las busquedas.
 	$max_results = 10;	
 
-	$theme = 'dark';
+	$theme = 'default';
 
 	$debug=true;
 ?>

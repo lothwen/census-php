@@ -2,12 +2,8 @@
 session_start();	
 
 //Validar si se ha logueado
-if (isset($_COOKIE['data'])) {
-	$counter=++$_COOKIE['data[l]'];
-	setcookie("data[l]", $counter,time() + (60*60*24));
-} else {	
+if (!isset($_COOKIE['sessionid']))
 	header("Location: error.php");				
-}
 
 include 'lib/config.php';
 $THEMEDIR = 'themes/'.$theme;
