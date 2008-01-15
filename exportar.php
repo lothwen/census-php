@@ -63,27 +63,27 @@ while($row = mysql_fetch_array($result))
         </tr>      
         <tr>
                 <td>Koskorrak</td>
-                <td><?echo $total_ramas[1]?></td>
+                <td><?echo $total_ramas[0]?></td>
         </tr>   
         <tr>
                 <td>Kaskondoak</td>
-                <td><?echo $total_ramas[2]?></td>
+                <td><?echo $total_ramas[1]?></td>
         </tr>   
         <tr>
                 <td>Oinarinak</td>
-                <td><?echo $total_ramas[3]?></td>
+                <td><?echo $total_ramas[2]?></td>
         </tr>   
         <tr>
                 <td>Azkarrak</td>
-                <td><?echo $total_ramas[4]?></td>
+                <td><?echo $total_ramas[3]?></td>
         </tr>   
         <tr>
                 <td>Trebeak</td>
-                <td><?echo $total_ramas[5]?></td>
+                <td><?echo $total_ramas[4]?></td>
         </tr>
 	<tr>
 		<td>Arduradunak</td>
-                <td><?echo $total_ramas[0]?></td>
+                <td><?echo $total_ramas[5]?></td>
         </tr>
 </table>
 
