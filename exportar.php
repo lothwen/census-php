@@ -88,7 +88,7 @@ while($row = mysql_fetch_array($result))
 </table>
 
 <form action="pdf.php" method="post">
-        <input type="hidden" name="sentencia" value="SELECT * FROM censo">
+        <input type="hidden" name="sentencia" value="SELECT * FROM census">
         <input class="button" type="submit" name="generar" value="Exportar Censo en formato pdf">
 </form>
 </div>
