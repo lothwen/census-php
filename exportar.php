@@ -91,6 +91,8 @@ while($row = mysql_fetch_array($result))
         <input type="hidden" name="sentencia" value="SELECT * FROM census">
         <input class="button" type="submit" name="generar" value="Exportar Censo en formato pdf">
 </form>
+
+<a href="exportar_html.php">Exportar a html plano</a>
 </div>
 
 <?

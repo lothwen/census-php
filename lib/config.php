@@ -1,7 +1,7 @@
 <?php
 
 	$db_host ="localhost";
-	$user = "root";
+	$user = "";
 	$password = "";
 	$database = "censo";
 	
@@ -12,5 +12,5 @@
 
 	$theme = 'default';
 
-	$debug=true;
+	$debug=false;
 ?>
