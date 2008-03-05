@@ -6,7 +6,10 @@ if (!isset($_COOKIE['sessionid']))
 //	header("Location: error.php");				
 
 include 'lib/config.php';
-$THEMEDIR = 'themes/'.$theme;
+
+$THEMEDIR = 'themes/'.$theme.'_'.$database;
+if(!is_dir($THEMEDIR)) $THEMEDIR = 'themes/'.$theme;
+
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

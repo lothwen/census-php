@@ -1,9 +1,8 @@
 <?php
 
 	$db_host ="localhost";
-	$user = "";
+	$user = "root";
 	$password = "";
-	$database = "censo";
 	
 	$select_default="NOMBRE,APELLIDOS,TELEFONO,";
 

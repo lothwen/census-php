@@ -1,6 +1,10 @@
 <?
 include 'config.php';
 
+// Database dynamic selection for multiple instances.
+$host_parts = explode(".",$_SERVER['HTTP_HOST']);
+$database = $host_parts[1];
+
 function f_conectar(){
 	if (!($link=mysql_connect($GLOBALS["db_host"],$GLOBALS["user"],$GLOBALS["password"])))
 	{
