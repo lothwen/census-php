@@ -1,0 +1,4 @@
+<h4>About</h4>
+<p>This template is built with validated CSS and XHTML, by <a href="http://www.ndesign-studio.com">N.Design Studio</a>. Icons used here are from <a href="http://www.ndesign-studio.com/stock-icons/web-2-mini/">Web 2 Mini</a> pack. To download more <a href="http://www.ndesign-studio.com/resources/wp-themes/">WordPress Themes</a>, please visit www.ndesign-studio.com.</p>
+
+<p>Open "about_text.txt" file in the theme folder to edit this text.</p>

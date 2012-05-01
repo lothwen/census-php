@@ -1,0 +1,8 @@
+
+v1.0 
+
+- Add and delete childs to the database.
+- Edit the data of some child.
+- Make searches.
+- Export the search results to pdf.
+- Export "letter-ready" labels to send snail-mail without any effort.

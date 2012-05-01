@@ -1,0 +1,51 @@
+/*TABLA 1*/
+.table_list{
+	margin: auto;
+	padding: 0px;
+	line-height: 1.4em;
+	border-collapse: collapse;
+	border: 1px solid #5E8E0E;
+	color: #4F6480;
+	background: #F0F0F0;
+}
+
+thead{
+	color: #fff;
+	background: url('img/nav-button-bg.gif') repeat-x;
+	padding: 4px 8px 4px 8px;
+}
+
+.linea1	{
+	background: #E9ECEE;
+}
+
+.linea1 td {
+	padding: 2px 8px 2px 8px;
+}
+
+.linea2 {
+	background: #F0F0F0;
+}
+
+.linea2 td {
+	padding: 2px 8px 2px 8px;
+}
+		
+.linea1:hover	{
+	background: #fff;
+}
+
+.linea2:hover	{
+	background: #fff;
+}
+
+/*TABLA 2*/
+
+.tabla2{
+	margin: auto;
+	padding: 0px;
+	font: normal 0.9em tahoma, arial, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #ADBBCA;
+	color: #4F6480;
+}
