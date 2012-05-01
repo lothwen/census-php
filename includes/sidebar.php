@@ -23,8 +23,8 @@
     <li>
       <h2 class="sidebartitle">Ayuda</h2>
       <ul>
-      	<li><a href="">Manual de usuario</a></li>
-      	<li><a href="">F.A.Q. (preguntas frecuentes)</a></li>
+      	<li><a href="index2.php?section=ayuda&task=tutorial">Manual de usuario</a></li>
+      	<li><a href="index2.php?section=ayuda&task=faq">F.A.Q. (preguntas frecuentes)</a></li>
       </ul>
     </li>
  </ul>

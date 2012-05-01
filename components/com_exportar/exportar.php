@@ -129,7 +129,7 @@ if ($_POST['todos']) {
 	}
 }
 */
-$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo $where where RAMA!='7' and RAMA!='6' order by RAMA"; // todos menos monis y asabak
+$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA < 6";
 
 //Print labels
 foreach($db-> f_sql($sSql) as $fila) {
@@ -166,44 +166,25 @@ function html( ) {
 
 	global $db;
 
-	for($rama=1;$rama<7;$rama++){
-
-		$sql2 = "select NOMBRE from ramas where ID=".$rama;
-		$fila2 = current($db-> f_sql($sql2));
-		$nombre_rama = $fila2['NOMBRE']; ?>
-	
+	$sql = "select ID,NOMBRE from ramas";
+	foreach($db-> f_sql($sql) as $fila){?>
 		<br />
-		<h3><?echo $nombre_rama?></h3>
-		<table border=1 style="border-collapse:collapse" width="90%" align="center">
+		<h3><?echo $fila['NOMBRE']?></h3>
+		<table border=1 style="border-collapse:collapse" width="80%" align="center">
 			<tr>	
 				<td><b>NOMBRE</b></td>
 				<td><b>APELLIDOS</b></td>
-				<td><b>DIRECCION</b></td>
 				<td><b>DNI</b></td>
 			</tr>
 	
 		<?
-		$sql = "select NOMBRE,APELLIDOS,DIRECCION,PUEBLO,DNI,DNI_AMA,DNI_AITA from censo where RAMA='".$rama."'";
+		$sql = "select NOMBRE,APELLIDOS,DNI,DNI_AMA,DNI_AITA from censo where RAMA='".$fila['ID']."'";
 
 		foreach($db-> f_sql($sql) as $fila){
 
-			 switch(strtolower($fila['PUEBLO'])){
-			 	case 'sestao':
-					$cp = '48910';
-					break;
-			 	case 'portugalete':
-					$cp = '48920';
-					break;
-			 	case 'baracaldo':
-			 	case 'barakaldo':
-					$cp = '48901';
-					break;
-			 }
-			 
 			 echo "<tr>";
 		         echo "<td>".$fila['NOMBRE']."</td>";
 			 echo "<td>".$fila['APELLIDOS']."</td>";
-			 echo "<td>".$fila['DIRECCION']." ".$cp." ".$fila['PUEBLO']." Bizkaia</td>";
 		         if ($fila['DNI']!="")
 			         echo "<td>".$fila['DNI']."</td>";
 			 elseif($fila['DNI_AMA'])
@@ -222,66 +203,8 @@ function html( ) {
 function show( ) {
 
 	global $db, $THEMEDIR;
-?>
-<h2>Exportar datos</h2>
-
-<div class="center">
-
-<fieldset>
-<legend>Impresión de etiquetas para sobres</legend>
-<table border="0" align="center">
-	<tr>
-		<td>Todos</td>
-		<td><input type="checkbox" name="todos"></td>
-	</tr>
-	<? 
-	$sql = "select ID, NOMBRE from ramas";
-	foreach($db-> f_sql($sql) as $rama){?>
-		<tr>
-			<td><?echo $rama['NOMBRE']?></td>
-			<td><input type="checkbox" name="<?echo $rama['ID']?>"></td>
-		</tr>
-	<?}?>
-</table>
-
-<br/>
-<input type="button" onCLick="javascript:window.location='index2.php?section=<?echo $_GET['section']?>&task=labels'" value="Impresión de etiquetas">
-</fieldset>
-
-
-<br />
-
-<fieldset>
-<legend>Exportar datos</legend>
-        <a href="index2.php?section=<?echo $_GET['section']?>&task=pdf" ><img alt="Exportar Censo en formato pdf" src="<?echo $THEMEDIR?>/img/pdf-icon-big.gif" /></a>
-	<br />
-	<input type="button" onCLick="javascript:window.location='index2.php?section=<?echo $_GET['section']?>&task=html'" value="Exportar a html plano">
-</fieldset>
-
-<br><br>
-
-<fieldset>
-<legend>Total de chavales</legend>
-<table border="0" align="center">
-        <tr>
-                <th>Rama</th>
-                <th>Total</th>
-        </tr>      
-	<?
-	$sSql = "SELECT ramas.NOMBRE, COUNT(censo.ID) as total FROM ramas "
-		. "left join censo on ramas.ID = censo.RAMA GROUP BY ramas.ID";
-
-	foreach($db-> f_sql($sSql) as $row){?>
-	        <tr>
-	                <td><?echo $row['NOMBRE']?></td>
-	                <td><?echo $row['total']?></td>
-	        </tr>   
-	<?}?>
-</table>
-</fieldset>
-
-</div>
-<?
+	
+	HTML_exportar::show();
 }
 ?>
 

@@ -137,7 +137,7 @@ fieldset{
 	text-decoration: none;
 }
 
-#nav .page_item a{
+.page_item {
 	color: #ffffff;
 	text-decoration: none;
 	background: #5c8d0c url(img/nav-button-bg.gif) repeat-x;
@@ -278,4 +278,13 @@ hr.clear {
 	visibility: hidden;
 	margin: 0px;
 	padding: 0px;
+}
+
+.hidden {
+	position:absolute; 
+	top:0; 
+	left:-9999px; 
+	width:1px; 
+	height:1px; 
+	overflow:hidden;
 }

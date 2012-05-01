@@ -125,7 +125,7 @@ function widget_select($ddbbtable,$ddbbid,$ddbbname,$selectname,$defaultid=NULL,
 }
 
 
-function widget_table($width,$header_list,$filas,$tamanhos=NULL) {
+function widget_table($width,$header_list,$filas,$tamanhos=NULL, $align=NULL) {
 	
 	echo "<table class='table_list' width='$width' align='center' >";
  

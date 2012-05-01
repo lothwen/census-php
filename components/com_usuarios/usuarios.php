@@ -56,8 +56,8 @@ function save( $id ) {
 	
 	}else{
 		//Con esta sentencia SQL, insertamos los datos en la bbdd
-		$sSql = "INSERT INTO Usuarios (NOMBRE, USUARIO, CLAVE, COD_GRUPO) values "
-		. "('$_POST[nombre]', '$_POST[usuario]', '$_POST[clave]', $_SESSION[val_cod_grupo])";
+		$sSql = "INSERT INTO Usuarios (NOMBRE, USUARIO, CLAVE, COD_GRUPO, FECHA_ALTA, ULT_FECHA, COD_ULT_USU) values "
+		. "('$_POST[nombre]', '$_POST[usuario]', '$_POST[clave]', $_SESSION[val_cod_grupo], NOW(), NOW(), $_SESSION[val_cod_usu])";
 	
 	}
 	

@@ -1,53 +1,72 @@
 <? 
 
-class HTML_template {
+class HTML_exportar {
 
-	static $section = "template";
+	static $section = "exportar";
 	
-	function edit( $id=0, $row ) { ?>
-
-		
-		<h2><?echo $id>0 ? $titulo="Modificar __SECCION__" : $titulo="Insertar __SECCION__";?></h2>
-		<form name="insertar" method="post" action="<?echo $PHP_SELF."?section=".HTML_template::$section."&task=save&id=$id" ;?>">
-
-  		<table width="60%" align="center">
-		  <tr>
-	  	    <td>Form1:</td>
-	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
-		  </tr>
-
-		  <tr>
-	  	    <td><input class="button" type="button" value="Guardar" name="enviar"></td>
-	  	    <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
-		  </tr>
-	        </table>
+	function show(){
 	
-		</form>
+		global $THEMEDIR, $db;
+?>	
+<h2>Exportar datos</h2>
 
-	<?}
+<div class="center">
 
-	function show( $result ){
-	
-		global $THEMEDIR;
-	
-		echo "<h2>__TITULO_SECCION__</h2>";
+<fieldset>
+<legend>Impresión de etiquetas para sobres</legend>
+<table border="0" align="center">
+	<tr>
+		<td>Todos</td>
+		<td><input type="checkbox" name="todos"></td>
+	</tr>
+	<? 
+	$sql = "select ID, NOMBRE from ramas";
+	foreach($db-> f_sql($sql) as $rama){?>
+		<tr>
+			<td><?echo $rama['NOMBRE']?></td>
+			<td><input type="checkbox" name="<?echo $rama['ID']?>"></td>
+		</tr>
+	<?}?>
+</table>
 
-		foreach ($result as $fila) {
-	
-			$row = Array();
+<br/>
+<input type="button" onCLick="javascript:window.location='index2.php?section=<?echo $_GET['section']?>&task=labels'" value="Impresión de etiquetas">
+</fieldset>
 
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[APELLIDOS]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TELEFONO]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE_RAMA]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
-	
-			$filas[] = $row;
-		}
-		
-		$headers_list = Array("Titulo1","Titulo2","Titulo3","Titulo4","");
-		
-		echo cHtml::widget_table("90%",$headers_list,$filas,$columns_size);
+
+<br />
+
+<fieldset>
+<legend>Exportar datos</legend>
+        <a href="index2.php?section=<?echo $_GET['section']?>&task=pdf" ><img alt="Exportar Censo en formato pdf" src="<?echo $THEMEDIR?>/img/pdf-icon-big.gif" /></a>
+	<br />
+	<input type="button" onCLick="javascript:window.location='index2.php?section=<?echo $_GET['section']?>&task=html'" value="Exportar a html plano">
+</fieldset>
+
+<br><br>
+
+<fieldset>
+<legend>Total de chavales</legend>
+<table border="0" align="center">
+        <tr>
+                <th>Rama</th>
+                <th>Total</th>
+        </tr>      
+	<?
+	$sSql = "SELECT ramas.NOMBRE, COUNT(censo.ID) as total FROM ramas "
+		. "left join censo on ramas.ID = censo.RAMA GROUP BY ramas.ID";
+
+	foreach($db-> f_sql($sSql) as $row){?>
+	        <tr>
+	                <td><?echo $row['NOMBRE']?></td>
+	                <td><?echo $row['total']?></td>
+	        </tr>   
+	<?}?>
+</table>
+</fieldset>
+
+</div>
+<?
 	}
 }
 ?>

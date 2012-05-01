@@ -8,8 +8,8 @@
 class cMysql {
 
 	var $host = "localhost";
-	var $user = "census";
-	var $pw = "12census34";
+	var $user = "";
+	var $pw = "";
 
 	var $dbname;
 
@@ -38,14 +38,14 @@ class cMysql {
 		mysql_query("SET NAMES 'utf8'");
 		mysql_query("SET CHARACTER SET 'utf8'");
 	
-		return mysql_query($sql,$this->link);
+		return mysql_query(mysql_real_escape_string($sql),$this->link);
 	}
 
 	function f_sql($sql){
 
 		mysql_query("SET NAMES 'utf8'");
 		mysql_query("SET CHARACTER SET 'utf8'");
-	
+
 		$consulta = mysql_query($sql,$this->link);
 	
 		if (mysql_errno() != "0"){
