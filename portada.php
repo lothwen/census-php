@@ -1,15 +1,10 @@
 <?
-include 'lib/cab0.php';
-include 'version.php';
+include 'includes/html_heads.php';
 ?>
-	<title>Euskai Census <?echo $version?> : Portada</title>
-</head>
-<?
-include 'lib/cab1.php';
-?>
-	<center><h2> Census <?echo $version?></h2></center>
+<br />
+<center><h2> <?echo $conf-> getSetting('group_name'); ?> Census <?echo $conf-> getSetting('version');?></h2></center>
 
-<p> Bienvenid@ a Census</p>
+<h4> Bienvenid@ a Census</h4><br />
 
 <p>Census es una simple aplicación web para llevar el censo de los chavales apuntados a un grupo eskaut. El objetivo
 de la misma es facilitarle la vida al coordinador del grupo, ya que de esta manera, los datos de los chavales se
@@ -22,7 +17,7 @@ encuentran siempre accesibles y centralizados. Con esto evitamos el tener copias
 	<li> Exportar etiquetas para pegar en sobres con la dirección de los chavales.
 </ul>
 
-<p> Si quieres visitar la pagina web del grupo, deberas dirigirte a <a href="http://euskai.org">http://euskai.org</a></p>
+<p> Si quieres visitar la pagina web del grupo, deberas dirigirte a <a href="<?echo $conf-> getSetting('group_web');?>"><?echo $conf-> getSetting('group_web');?></a></p>
 
 <center><img alt="flor-lis.png" src="<?echo $THEMEDIR?>/img/flor-lis.png"></center>
-<?include 'lib/footer.php'?>
+<?include 'includes/footer.php'?>
