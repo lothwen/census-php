@@ -1,9 +1,10 @@
 <?function logout(){
 
 	session_start();
+	include "conf.php";
 	include "includes/cMysql.php";
 
-	$db = new cMysql();
+	$db = new cMysql($ddbb_host, $ddbb_user, $ddbb_pass);
 	$db-> select_db("census_general");
 
 	// delete db session record corresponding to currently logged in user
