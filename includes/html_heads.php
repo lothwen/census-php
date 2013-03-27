@@ -5,7 +5,7 @@ require 'includes/cMysql.php';
 require 'includes/cSettings.php';
 require 'includes/cHtml.php';
 
-$db = new cMysql();
+$db = new cMysql($ddbb_host, $ddbb_user, $ddbb_pass);
 include 'includes/session_auth.php';
 
 // Select the session database.

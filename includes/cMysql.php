@@ -13,7 +13,12 @@ class cMysql {
 
 	var $dbname;
 
-	function __construct(){
+	function __construct($host, $user, $pw){
+
+		$this->host=$host;
+       		$this->user=$user; 	
+       		$this->pw=$pw; 	
+
 		if (!($this->link=mysql_connect($this->host,$this->user,$this->pw))) {
 			echo "<script>alert('Error conectando a la base de datos');</script>";
 			exit();
