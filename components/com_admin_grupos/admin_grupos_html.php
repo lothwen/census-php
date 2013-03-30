@@ -48,24 +48,27 @@ class HTML_admin_grupos {
 
 	function show( $result ){
 	
-		global $THEMEDIR;
+		global $db, $THEMEDIR;
 	
 		echo "<h2>Grupos</h2>";
 
 		foreach ($result as $fila) {
 	
+			$db->select_db("census_".$fila['NOMBRE_BBDD']);
+			$count = current($db->f_sql("select count(ID) as COUNT from censo"));
 			$row = Array();
 
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE_BBDD]</a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\">$count[COUNT]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
 	
 			$filas[] = $row;
 		}
 		
-		$headers_list = Array("Nombre","Base de datos","");
+		$headers_list = Array("Nombre","Base de datos","Nº de personas","");
 		
-		echo cHtml::widget_table("60%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_table("80%",$headers_list,$filas,$columns_size);
 		?>
 
 		<br />
