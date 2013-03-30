@@ -71,85 +71,29 @@ function labels( ) {
 
 	$pdf->Open();
 	//$pdf->AddPage();
-/*
-// Formo la sentencia SQL
-if ($_POST['todos']) {
-	$where = "";
-}else{ 
-	$primero = false;
-	
-	if ($_POST['koskorrak']){
-		$where = "WHERE RAMA=1";
-		$primero = true;
-	}
-	
-	if ($_POST['kaskondoak']){
-		if (!$primero){
-			$where = "WHERE RAMA=2";
-			$primero = true;
-		}else{
-			$where .= " or RAMA=2";
-		}
-	}
-	
-	if ($_POST['oinarinak']){
-		if (!$primero){
-			$where = "WHERE RAMA=3";
-			$primero = true;
-		}else{
-			$where .= " or RAMA=3";
-		}
-	}
-	
-	if ($_POST['azkarrak']){
-		if (!$primero){
-			$where = "WHERE RAMA=4";
-			$primero = true;
-		}else{
-			$where .= " or RAMA=4";
-		}
-	}
 
-	if ($_POST['trebeak']){
-		if (!$primero){
-			$where = "WHERE RAMA=5";
-			$primero = true;
-		}else{
-			$where .= " or RAMA=5";
-		}
-	}
-	
-	if ($_POST['arduradunak']){
-		if (!$primero){
-			$where = "WHERE RAMA=6";
-			$primero = true;
-		}else{
-			$where .= " or RAMA=6";
-		}
-	}
-}
-*/
-$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA < 6";
+	#$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA < 6";
+	$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA in (".implode(',',$_POST['ramas']).")";
 
-//Print labels
-foreach($db-> f_sql($sSql) as $fila) {
+	//Print labels
+	foreach($db-> f_sql($sSql) as $fila) {
      	
-	$label = $fila['NOMBRE']." ".$fila['APELLIDOS'];
-	$label .= "\n";
-	$label .= $fila['DIRECCION'];
- 	$label .= "\n";
-	if (trim(strtolower($fila['PUEBLO'])) == "sestao"){	
+		$label = $fila['NOMBRE']." ".$fila['APELLIDOS'];
+		$label .= "\n";
+		$label .= $fila['DIRECCION'];
+ 		$label .= "\n";
+		if (trim(strtolower($fila['PUEBLO'])) == "sestao"){	
 		$label .= "48910 Sestao";	
-	}elseif (trim(strtolower($fila['PUEBLO'])) == "portugalete"){
-		$label .= "48920 Portugalete";
-	}elseif (trim(strtolower($fila['PUEBLO'])) == "baracaldo"){
-		$label .= "48901 Barakaldo";
-	}
+		}elseif (trim(strtolower($fila['PUEBLO'])) == "portugalete"){
+			$label .= "48920 Portugalete";
+		}elseif (trim(strtolower($fila['PUEBLO'])) == "baracaldo"){
+			$label .= "48901 Barakaldo";
+		}
 	
-	$label .= "\n";
-	$label .= "Bizkaia";
+		$label .= "\n";
+		$label .= "Bizkaia";
 
-	$pdf->Add_PDF_Label(iconv("utf-8", "iso-8859-1", $label));
+		$pdf->Add_PDF_Label(iconv("utf-8", "iso-8859-1", $label));
 }
 
 $nombre = "etiquetas" . date("d-m-y") . ".pdf";

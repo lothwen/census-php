@@ -91,6 +91,7 @@ form {
 fieldset{
 	width: 400px;
 	border-color: #59770e;
+	margin-bottom: 15px;
 }
 #container {
 	margin: 0px auto;
