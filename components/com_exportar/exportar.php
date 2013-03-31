@@ -70,12 +70,9 @@ function labels( ) {
 	//$pdf = new PDF_Label('6083', 'mm', 1, 1);
 
 	$pdf->Open();
-	//$pdf->AddPage();
-
-	#$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA < 6";
-	$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA in (".implode(',',$_POST['ramas']).")";
 
 	//Print labels
+	$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,PUEBLO FROM censo where RAMA in (".implode(',',$_POST['ramas']).")";
 	foreach($db-> f_sql($sSql) as $fila) {
      	
 		$label = $fila['NOMBRE']." ".$fila['APELLIDOS'];
