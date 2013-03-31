@@ -31,8 +31,6 @@ if($theme!=''){
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<title><?echo $conf-> getSetting('group_name').  " Census ".$conf-> getSetting('version');?></title>
 	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/estilo.css" type="text/css">
-	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/menuMatic.css" type="text/css">
-	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/estilo-tabla.css" type="text/css">
 
 	<link type="text/css" href="js/fg-menu/fg.menu.css" media="screen" rel="stylesheet" />
     	<link type="text/css" href="js/fg-menu/theme/ui.all.css" media="screen" rel="stylesheet" />
