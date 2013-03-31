@@ -7,49 +7,18 @@ class HTML_kid {
 	function edit( $id=0, $row ) {
 
 ?>
-
-<script>
-function f_aceptar(){
-
-	var formulario;	
-	formulario = document.insertar;
-
-	if (formulario.nombre.value==""){	
-		alert("Debe rellenar el campo nombre");
-	}else{
-		if (formulario.apellidos.value==""){	
-			alert("Debe rellenar el campo apellidos")
-		}else{
-			if (formulario.direccion.value == ""){	
-				alert("Debe rellenar el campo direccion");
-			}else{
-				if (formulario.telefono.value == ""){	
-					alert("Debe rellenar el campo telefono");
-				}else{
-					if(formulario.rama.value == "0"){
-						alert("Debe elegir una rama");
-					}else{
-						formulario.submit();
-					}
-				}
-			}
-		}
-	}
-}
-</script>
-
 <h2><?echo $id>0 ? "Modificar chaval/a" : "Insertar nuevo chaval/a" ?></h2>
 <form name="insertar" method="post" action="<?echo $PHP_SELF.'?section='.HTML_kid::$section.'&task=save&id='.$id?>">
 
   <table width="60%" align="center">
 	<tr>
 	  <td>Nombre:</td>
-	  <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
+	  <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
 	</tr>
 
 	<tr>
 	  <td>Apellidos: </td>
-	  <td><input type="text" name="apellidos" value="<?echo $row['APELLIDOS']?>"></td>
+	  <td><input type="text" name="apellidos" value="<?echo $row['APELLIDOS']?>" required></td>
 	</tr>
 
 	<tr>
@@ -84,22 +53,22 @@ function f_aceptar(){
 
 	<tr>
 	  <td>E-mail: </td>
-	  <td><input type="text" name="email" value="<?echo $row['EMAIL']?>"></td>
+	  <td><input type="email" name="email" value="<?echo $row['EMAIL']?>"></td>
 	</tr>
 	
 	<tr>
 	  <td>Dirección: </td>
-	  <td><input type="text" name="direccion" value="<?echo $row['DIRECCION']?>"></td>
+	  <td><input type="text" name="direccion" value="<?echo $row['DIRECCION']?>" required></td>
 	</tr>
 
 	<tr>
 	  <td>Pueblo: </td>
-	  <td><input type="text" name="pueblo" value="<?echo $row['PUEBLO']?>"></td>
+	  <td><input type="text" name="pueblo" value="<?echo $row['PUEBLO']?>" required></td>
 	</tr>
 
 	<tr>
 	  <td>Teléfono: </td>
-	  <td><input type="text" name="telefono" maxlength="9" value="<?echo $row['TELEFONO']?>"></td>
+	  <td><input type="text" name="telefono" maxlength="9" value="<?echo $row['TELEFONO']?>" required></td>
 	</tr>
 
 	<tr>
@@ -108,7 +77,7 @@ function f_aceptar(){
 	</tr>
 
 	<tr>
-	  <td><input class="button" type="button" onClick="f_aceptar()" value="Guardar" name="enviar"></td>
+	  <td><input class="button" type="submit" value="Guardar" name="enviar"></td>
 	  <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
 	</tr>
 

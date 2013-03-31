@@ -6,29 +6,6 @@ class HTML_grupo {
 
 	function edit( $row ) { ?>
 
-		<script>
-		function f_aceptar(){
-
-	        	var formulario;
-	        	formulario = document.insertar;
-	
-        		if (formulario.nombre.value==""){
-        		        alert("Debe rellenar el campo nombre");
-        		}else{
-                		formulario.submit();
-
-        	        }
-        	}
-		
-		function updateThumbnail(){
-
-	        	var image;
-	        	image = document.insertar.theme.value;
-
-			document.images["thumb"].src = "themes/" + image + "/screenshot.png";
-
-        	}
-		</script>
 
 		
 		<h2>Configuración</h2>
@@ -39,7 +16,7 @@ class HTML_grupo {
   		<table width="60%" align="center">
 		  <tr>
 	  	    <td>Nombre: </td>
-	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
+	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
 		  </tr>
 		  <tr>
 	  	    <td>Dirección: </td>
@@ -92,13 +69,23 @@ class HTML_grupo {
 		<br />
 
 		<div class="center">
-	     	    <input class="button" type="button" onClick="javascript:f_aceptar();" value="Guardar" name="enviar">
+	     	    <input class="button" type="submit" value="Guardar" name="enviar">
 	  	    <input class="button" type="reset" value="Restablecer" name="reset">
 	  	</div>
 	
 		</form>
 
-		<script>updateThumbnail();</script>
+		<script type="text/javascript">
+			function updateThumbnail(){
+
+	        		var image;
+	        		image = document.insertar.theme.value;
+
+				document.images["thumb"].src = "themes/" + image + "/screenshot.png";
+
+        		}
+			updateThumbnail();
+		</script>
 	<?}
 }
 ?>

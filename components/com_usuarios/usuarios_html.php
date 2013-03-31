@@ -5,22 +5,6 @@ class HTML_usuarios {
 	static $section = "usuarios";
 	
 	function edit( $id=0, $row ) { ?>
-
-		<script>
-		function f_aceptar(){
-
-	        	var formulario;
-	        	formulario = document.insertar;
-	
-        		if (formulario.nombre.value==""){
-        		        alert("Debe rellenar el campo nombre");
-        		}else{
-                		formulario.submit();
-
-        	        }
-        	}
-		</script>
-
 		
 		<h2><?echo $id>0 ? $titulo="Modificar Usuario" : $titulo="Insertar nueva usuario";?></h2>
 		<form name="insertar" method="post" action="<?echo $PHP_SELF."?section=".HTML_usuarios::$section."&task=save&id=$id" ;?>">
@@ -28,20 +12,20 @@ class HTML_usuarios {
   		<table width="60%" align="center">
 		  <tr>
 	  	    <td>Nombre: </td>
-	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
+	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
 		  </tr>
 		  <tr>
 	  	    <td>Usuario: </td>
-	  	    <td><input type="text" name="usuario" value="<?echo $row['USUARIO']?>"></td>
+	  	    <td><input type="text" name="usuario" value="<?echo $row['USUARIO']?>" required></td>
 		  </tr>
 		  <tr>
 	  	    <td>Clave: </td>
-	  	    <td><input type="text" name="clave" value="<?echo $row['CLAVE']?>"></td>
+	  	    <td><input type="text" name="clave" value="<?echo $row['CLAVE']?>" required></td>
 		  </tr>
 		</table>
 		  
 		<div class="center">
-	  	    <input class="button" type="button" onClick="javascript:f_aceptar();" value="Guardar" name="enviar">
+	  	    <input class="button" type="submit" value="Guardar" name="enviar">
 	  	    <input class="button" type="reset" value="Restablecer" name="reset">
 		        <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'>
 		</div>

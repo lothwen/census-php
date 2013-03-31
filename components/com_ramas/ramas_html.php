@@ -6,33 +6,17 @@ class HTML_ramas {
 	
 	function edit( $id=0, $row ) { ?>
 
-		<script>
-		function f_aceptar(){
-
-	        	var formulario;
-	        	formulario = document.insertar;
-	
-        		if (formulario.nombre.value==""){
-        		        alert("Debe rellenar el campo nombre");
-        		}else{
-                		formulario.submit();
-
-        	        }
-        	}
-		</script>
-
-		
 		<h2><?echo $id>0 ? $titulo="Modificar Rama" : $titulo="Insertar nueva rama";?></h2>
 		<form name="insertar" method="post" action="<?echo $PHP_SELF."?section=".HTML_ramas::$section."&task=save&id=$id" ;?>">
 
   		<table width="60%" align="center">
 		  <tr>
 	  	    <td>Nombre: </td>
-	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
+	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
 		  </tr>
 
 		  <tr>
-	  	    <td><input class="button" type="button" onClick="javascript:f_aceptar();" value="Guardar" name="enviar"></td>
+	  	    <td><input class="button" type="submit"value="Guardar" name="enviar"></td>
 	  	    <td><input class="button" type="reset" value="Restablecer" name="reset">
 		        <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'></td>
 		  </tr>

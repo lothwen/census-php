@@ -5,22 +5,6 @@ class HTML_admin_grupos {
 	static $section = "admin_grupos";
 	
 	function edit( $id=0, $row ) { ?>
-
-		<script>
-		function f_aceptar(){
-
-	        	var formulario;
-	        	formulario = document.insertar;
-	
-        		if (formulario.nombre.value==""){
-        		        alert("Debe rellenar el campo nombre");
-        		}else{
-                		formulario.submit();
-
-        	        }
-        	}
-		</script>
-
 		
 		<h2><?echo $id>0 ? $titulo="Modificar Grupo" : $titulo="Insertar nuevo grupo";?></h2>
 		<form name="insertar" method="post" action="<?echo $PHP_SELF."?section=".HTML_admin_grupos::$section."&task=save&id=$id" ;?>">
@@ -28,7 +12,7 @@ class HTML_admin_grupos {
   		<table width="60%" align="center">
 		  <tr>
 	  	    <td>Nombre: </td>
-	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>"></td>
+	  	    <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
 		  </tr>
 		  <tr>
 	  	    <td>Base de datos: </td>
@@ -37,9 +21,9 @@ class HTML_admin_grupos {
 		</table>
 		  
 		<div class="center">
-	  	    <input class="button" type="button" onClick="javascript:f_aceptar();" value="Guardar" name="enviar">
+	  	    <input class="button" type="button" value="Guardar" name="enviar">
 	  	    <input class="button" type="reset" value="Restablecer" name="reset">
-		        <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'>
+		    <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'>
 		</div>
 	
 		</form>
