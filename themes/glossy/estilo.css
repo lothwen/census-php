@@ -88,11 +88,19 @@ form {
 	margin:0px;
 	padding:0px;
 }
-fieldset{
-	width: 400px;
+fieldset {
+	width: 460px;
 	border-color: #59770e;
 	margin-bottom: 15px;
 }
+legend {
+	font-weight: bold;
+}
+label {
+	float:left;
+	width:120px;
+}
+
 #container {
 	margin: 0px auto;
 	width: 760px;
@@ -210,6 +218,19 @@ fieldset{
 	font-weight: bold;
 	padding-left: 10px;
 	background: url('img/mini-page-arrow.gif') no-repeat;
+}
+/* forms */
+form ul {
+        margin: 0;
+        padding: 0;
+}
+form ul li {
+        list-style: none;
+        margin: 0;
+	padding: 2px 0 2px 0px;
+        border-bottom: 1px solid #dceeb7;
+	background: url('img/mini-page-arrow.gif') no-repeat;
+	padding-left: 10px;
 }
 /*search form */
 #searchform {

@@ -3,7 +3,7 @@
     <li>
       <h2 class="sidebartitle">Búsqueda rápida de chavales</h2>
 	<form method="post" id="searchform" action="index2.php?section=chavales&task=show&rama=0">
-		<div><input type="text" value="" name="nombre" id="s" />
+		<div><input type="text" value="" name="search" id="s" />
 			<input type="submit" id="searchsubmit" value="Buscar" />
 		</div>
 	</form>

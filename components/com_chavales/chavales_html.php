@@ -10,76 +10,93 @@ class HTML_kid {
 <h2><?echo $id>0 ? "Modificar chaval/a" : "Insertar nuevo chaval/a" ?></h2>
 <form name="insertar" method="post" action="<?echo $PHP_SELF.'?section='.HTML_kid::$section.'&task=save&id='.$id?>">
 
-  <table width="60%" align="center">
-	<tr>
-	  <td>Nombre:</td>
-	  <td><input type="text" name="nombre" value="<?echo $row['NOMBRE']?>" required></td>
-	</tr>
+	<fieldset>
+	  <legend>Datos generales</legend>
 
-	<tr>
-	  <td>Apellidos: </td>
-	  <td><input type="text" name="apellidos" value="<?echo $row['APELLIDOS']?>" required></td>
-	</tr>
+	  <ul>
+	  	<li><label for="nombre">Nombre:</label>
+		    <input type="text" id="nombre" name="nombre" value="<?echo $row['NOMBRE']?>" required>
+		</li>
 
-	<tr>
-	  <td>Rama: </td>
-	  <td><?echo cHtml::widget_select("ramas","ID","NOMBRE","rama",$row['RAMA']);?></td>
-	</tr>
+	  	<li><label for="apellidos">Apellidos:</label>
+		    <input type="text" id="apellidos" name="apellidos" value="<?echo $row['APELLIDOS']?>" required>
+		</li>
 
-	<tr>
-	  <td>DNI: </td>
-	  <td><input type="text" name="dni" maxlength="10" value="<?echo $row['DNI']?>"></td>
-	</tr>
+	  	<li><label for="rama">Rama:</label>
+	  	    <?echo cHtml::widget_select("ramas","ID","NOMBRE","rama",$row['RAMA']);?>
+		</li>
 
-	<tr>
-	  <td>Ama: </td>
-	  <td><input type="text" name="ama" value="<?echo $row['AMA']?>"></td>
-	</tr>
+	  	<li><label for="dni">DNI:</label>
+	  	    <input type="text" id="dni" name="dni" maxlength="10" value="<?echo $row['DNI']?>">
+		</li>
+	  </ul>
+	</fieldset>
 
-	<tr>
-	  <td>DNI Ama: </td>
-	  <td><input type="text" name="dni_ama" maxlength="10" value="<?echo $row['DNI_AMA']?>"></td>
-	</tr>
+	<fieldset>
+	  <legend>Datos familiares</legend>
+	  
+	  <ul>
+	  	<li><label for="ama">Ama:</label>
+	  	    <input type="text" id="ama" name="ama" value="<?echo $row['AMA']?>">
+		</li>
 
-	<tr>
-	  <td>Aita: </td>
-	  <td><input type="text" name="aita" value="<?echo $row['AITA']?>"></td>
-	</tr>
-
-	<tr>
-	  <td>DNI Aita: </td>
-	  <td><input type="text" name="dni_aita" maxlength="10" value="<?echo $row['DNI_AITA']?>"></td>
-	</tr>
-
-	<tr>
-	  <td>E-mail: </td>
-	  <td><input type="email" name="email" value="<?echo $row['EMAIL']?>"></td>
-	</tr>
+	  	<li><label for="dni_ama">DNI Ama:</label>
+	  	    <input type="text" id="dni_ama" name="dni_ama" maxlength="10" value="<?echo $row['DNI_AMA']?>">
+		</li>
 	
-	<tr>
-	  <td>Dirección: </td>
-	  <td><input type="text" name="direccion" value="<?echo $row['DIRECCION']?>" required></td>
-	</tr>
+	  	<li><label for="aita">Aita:</label>
+	  	    <input type="text" id="aita" name="aita" value="<?echo $row['AITA']?>">
+		</li>
 
-	<tr>
-	  <td>Pueblo: </td>
-	  <td><input type="text" name="pueblo" value="<?echo $row['PUEBLO']?>" required></td>
-	</tr>
+	  	<li><label for="dni_aita">DNI Aita:</label>
+	  	    <input type="text" id="dni_aita" name="dni_aita" maxlength="10" value="<?echo $row['DNI_AITA']?>">
+		</li>
+	  </ul>
+	</fieldset>
 
-	<tr>
-	  <td>Teléfono: </td>
-	  <td><input type="text" name="telefono" maxlength="9" value="<?echo $row['TELEFONO']?>" required></td>
-	</tr>
+	<fieldset>
+	  <legend>Contacto</legend>
+	
+	  <ul>	
+	  	<li><label for="direccion">Dirección:</label>
+	  	    <input type="text" id="direccion" name="direccion" value="<?echo $row['DIRECCION']?>" required>
+		</li>
 
-	<tr>
-	  <td>Móvil:</td>
-	  <td><input type="text" name="movil" maxlength="9" value="<?echo $row['MOVIL']?>"></td>
-	</tr>
+	  	<li><label for="municipio">Municipio:</label>
+	  	    <input type="text" id="municipio" name="municipio" value="<?echo $row['MUNICIPIO']?>" required>
+		</li>
+	  
+	  	<li><label for="cpostal">Código Postal:</label>
+	  	    <input type="text" id="cpostal" name="cpostal" maxlength="5" value="<?echo $row['CODIGO_POSTAL']?>" required>
+		</li>
+	  
+	  	<li><label for="provincia">Provincia:</label>
+	  	    <input type="text" id="provincia" name="provincia" value="<?echo $row['PROVINCIA']?>" required>
+		</li>
+	  
+	  	<li><label for="email">E-mail:</label>
+	  	    <input type="email" id="email" name="email" value="<?echo $row['EMAIL']?>">
+		</li>
+	  
+	  	<li><label for="telefono1">Teléfono 1:</label>
+	  	    <input type="text" id="telefono1" name="telefono1" maxlength="9" value="<?echo $row['TELEFONO1']?>" required>
+		</li>
 
-	<tr>
-	  <td><input class="button" type="submit" value="Guardar" name="enviar"></td>
-	  <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
-	</tr>
+	  	<li><label for="telefono2">Teléfono 2:</label>
+	  	    <input type="text" id="telefono2" name="telefono2" maxlength="9" value="<?echo $row['TELEFONO2']?>">
+		</li>
+	  </ul>
+	</fieldset>
+	
+	<fieldset>
+	  <legend>Otros datos</legend>
+	  <textarea rows="10" style="width:450px" id="observaciones" name='observaciones'><?echo $row['OBSERVACIONES']?></textarea>
+	</fieldset>
+	
+	<div>
+		<input class="button" type="submit" value="Guardar" name="enviar">
+	  	<input class="button" type="reset" value="Restablecer" name="reset">
+	</div>
 
   </table>
 	
@@ -139,7 +156,7 @@ class HTML_kid {
 
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[APELLIDOS]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TELEFONO]</a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TELEFONO1]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE_RAMA]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
 	

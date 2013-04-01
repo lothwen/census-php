@@ -55,18 +55,22 @@ function save_kid( $id ) {
 		$sSql = "UPDATE censo SET NOMBRE='$_POST[nombre]', APELLIDOS='$_POST[apellidos]', " 
 			. "RAMA='$_POST[rama]', DNI='$_POST[dni]', AMA='$_POST[ama]',"
 			. "DNI_AMA='$_POST[dni_ama]', AITA='$_POST[aita]', DNI_AITA='$_POST[dni_aita]', "
-			. "EMAIL='$_POST[email]', DIRECCION='$_POST[direccion]', PUEBLO='$_POST[pueblo]', "
-			. "TELEFONO='$_POST[telefono]', MOVIL='$_POST[movil]' WHERE ID='$id'";
+			. "EMAIL='$_POST[email]', DIRECCION='$_POST[direccion]', MUNICIPIO='$_POST[municipio]', "
+			. "CODIGO_POSTAL='$_POST[cpostal]', PROVINCIA='$_POST[provincia]', "
+			. "TELEFONO1='$_POST[telefono1]', TELEFONO2='$_POST[telefono2]', "
+			. "OBSERVACIONES='$_POST[observaciones]', ULT_FECHA=NOW() WHERE ID='$id'";
 	
 	}else{
 		//Con esta sentencia SQL, insertamos los datos en la bbdd
-		$sSql = "INSERT INTO censo VALUES(NULL,'{$_POST['nombre']}',"
-        	       . "'{$_POST['apellidos']}','{$_POST['rama']}','{$_POST['direccion']}','{$_POST['pueblo']}',"
-        	       . "'{$_POST['dni']}','{$_POST['ama']}','{$_POST['dni_ama']}','{$_POST['aita']}',"
-        	       . "'{$_POST['dni_aita']}','{$_POST['email']}','{$_POST['telefono']}','{$_POST['movil']}')";
+		$sSql = "INSERT INTO censo (NOMBRE, APELLIDOS, RAMA, DNI, AMA, DNI_AMA, AITA, DNI_AITA, EMAIL, 
+			 DIRECCION, MUNICIPIO, CODIGO_POSTAL, PROVINCIA, TELEFONO1, TELEFONO2, OBSERVACIONES, 
+			 ULT_FECHA, FECHA_ALTA) VALUES('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['rama']."',
+			 '".$_POST['dni']."','".$_POST['ama']."','".$_POST['dni_ama']."',
+        	         '".$_POST['aita']."','".$_POST['dni_aita']."','".$_POST['email']."','".$_POST['direccion']."',
+			 '".$_POST['municipio']."','".$_POST['cpostal']."','".$_POST['provincia']."','".$_POST['telefono1']."',
+		  	 '".$_POST['telefono2']."','".$_POST['observaciones']."', NOW(),NOW())";
 	
 	}
-	
 	$db-> f_sql($sSql);
 	
 	controller(); // Call to controller without params to show the default option, finder.
@@ -79,7 +83,7 @@ function remove_kid( $id ) {
 	//Con esta sentencia SQL, borramos el registro de la bbdd
 	$db-> f_sql("DELETE FROM censo WHERE ID=$id");
 	
-	//HTML_kid::remove( );
+	controller(); // Call to controller without params to show the default option, finder.
 }
 
 function show_kid( ) {
@@ -97,10 +101,14 @@ function show_kid( ) {
 	$max_results=$conf-> getSetting('max_filas');
 	
 	// Formo la query con el where del buscador
-	$query  = "SELECT censo.ID, censo.NOMBRE, censo.APELLIDOS, censo.TELEFONO, censo.RAMA, "
+	$query  = "SELECT censo.ID, censo.NOMBRE, censo.APELLIDOS, censo.TELEFONO1, censo.RAMA, "
 		. "ramas.NOMBRE as NOMBRE_RAMA FROM censo, ramas WHERE censo.RAMA=ramas.ID ";
 
-	if(!empty($_POST['nombre']))
+	if(!empty($_POST['search']))
+		$query .= "and (censo.NOMBRE like \"%" . trim(Census::getParam('search')) ."%\" 
+			   or censo.APELLIDOS like \"%" . trim(Census::getParam('search')) ."%\")";
+
+	elseif(!empty($_POST['nombre']))
 		$query .= "and censo.NOMBRE like \"%" . trim(Census::getParam('nombre')) ."%\" ";
 	
 	if(!empty($_POST['apellidos']))
