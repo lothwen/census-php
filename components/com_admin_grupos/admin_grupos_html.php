@@ -33,9 +33,23 @@ class HTML_admin_grupos {
 	function show( $result ){
 	
 		global $db, $THEMEDIR;
-	
-		echo "<h2>Grupos</h2>";
+		?>
 
+		<script type="text/javascript">	
+		$(document).ready(function() {
+  		  $('a.confirm').click(function(event) {
+    		    event.preventDefault()
+    		    var url = $(this).attr('href');
+    		    var confirm_box = confirm('¿Estás seguro de querer eliminar este grupo?');
+    		    if (confirm_box) {
+       		      window.location = url;
+    		    }
+  		  });
+		});
+		</script>
+
+		<h2>Grupos</h2>
+		<?
 		foreach ($result as $fila) {
 	
 			$db->select_db("census_".$fila['NOMBRE_BBDD']);
@@ -45,7 +59,7 @@ class HTML_admin_grupos {
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE_BBDD]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\">$count[COUNT]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\" class='confirm'><img src=\"".$THEMEDIR."/img/borrar.png\" border=0 /></a>";
 	
 			$filas[] = $row;
 		}
