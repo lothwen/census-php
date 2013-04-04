@@ -9,26 +9,41 @@ class HTML_kid {
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#municipio").autocomplete({
-	source: function( request, response ) {
-	$.ajax({
-		url: "http://ws.geonames.org/searchJSON",
-		dataType: "jsonp",
-		data: {
-			featureClass: "P",
-			style: "full",
-			maxRows: 12,
-			name_startsWith: request.term
+	$('.ajax-typehead').typeahead({
+    		source: function(query, process) {
+        		return $.ajax({
+            			url: $(this)[0].$element[0].dataset.link,
+            			type: 'get',
+            			data: {name_startsWith: query, maxRows: 10, country: 'ES', lang: 'es', featureClass: 'P', username: 'euskai'},
+            			dataType: 'json',
+            			success: function(json) {
+					var result_array = new Array;
+                			$.map(json.geonames, function(data, item){
+	                    			result_array.push(data.name);
+ 			               	});
+                			return typeof json.geonames == 'undefined' ? false : process(result_array);
+            			}
+        		});
+    		},
+		property: 'name',
+	    	items: 6,
+		minLength: 2,
+		updater: function(selected){
+        		$.ajax({
+            			url: "http://api.geonames.org/postalCodeSearchJSON",
+            			type: 'get',
+            			data: {placename: selected, maxRows: 1, country: 'ES', username: 'euskai'},
+            			dataType: 'json',
+            			success: function(json) {
+					$('#cpostal').val(json.postalCodes[0].postalCode);
+					$('#provincia').val(json.postalCodes[0].adminName2);
+                			return true;
+            			}
+        		});
+			$('#email').focus();
+			return selected;
 		},
-		success: function( data ) {
-			response( $.map( data.geonames, function( item ) {
-				return { label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName, value: item.name }
-			}));
-		}
-	});
-	},
-	minLength: 2,
-  });
+	});	
 });
 </script>
 <h2><?echo $id>0 ? "Modificar chaval/a" : "Insertar nuevo chaval/a" ?></h2>
@@ -89,7 +104,8 @@ $(document).ready(function() {
 
 	  	<li><div class="controls controls-row">
 			<label for="municipio">Municipio:</label>
-	  	    	<input type="text" class="span2" id="municipio" name="municipio" value="<?echo $row['MUNICIPIO']?>" class="ui-autocomplete-input" autocomplete="off" required>
+	  	    	<input type="text" class="ajax-typehead span2" id="municipio" name="municipio" value="<?echo $row['MUNICIPIO']?>" class="ui-autocomplete-input" autocomplete="off" data-link='http://api.geonames.org/searchJSON' data-provide="typeahead" required>
+
 	  		<label for="cpostal">&nbsp;&nbsp;C. Postal:</label>
 	  	    	<input type="text" class="span1" id="cpostal" name="cpostal" maxlength="5" value="<?echo $row['CODIGO_POSTAL']?>" required>
 		    </div>
