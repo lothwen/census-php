@@ -23,23 +23,23 @@ if($theme!=''){
 }
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<title><?echo $conf-> getSetting('group_name').  " Census ".$conf-> getSetting('version');?></title>
-	<link rel="STYLESHEET" href="<?echo $THEMEDIR?>/estilo.css" type="text/css">
-
-	<link type="text/css" href="js/fg-menu/fg.menu.css" media="screen" rel="stylesheet" />
-    	<link type="text/css" href="js/fg-menu/theme/ui.all.css" media="screen" rel="stylesheet" />
 
 	<!-- External jquery js -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript"></script>
-	
-	<script type="text/javascript" src="js/fg-menu/fg.menu.js"></script>
+
+	<!-- Bootstrap includes -->
+	<link href="<?echo $THEMEDIR?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="<?echo $THEMEDIR?>/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Theme CSS file -->
+	<link rel="stylesheet" href="<?echo $THEMEDIR?>/estilo.css" type="text/css">
 
 </head>
 
