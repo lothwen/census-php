@@ -106,7 +106,7 @@ function html( ) {
 	foreach($db-> f_sql($sql) as $fila){?>
 		<br />
 		<h3><?echo $fila['NOMBRE']?></h3>
-		<table border=1 style="border-collapse:collapse" width="80%" align="center">
+		<table style="border-collapse:collapse" width="80%" align="center" class="table table-condensed">
 			<tr>	
 				<td><b>NOMBRE</b></td>
 				<td><b>APELLIDOS</b></td>

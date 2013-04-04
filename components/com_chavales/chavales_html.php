@@ -7,6 +7,30 @@ class HTML_kid {
 	function edit( $id=0, $row ) {
 
 ?>
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#municipio").autocomplete({
+	source: function( request, response ) {
+	$.ajax({
+		url: "http://ws.geonames.org/searchJSON",
+		dataType: "jsonp",
+		data: {
+			featureClass: "P",
+			style: "full",
+			maxRows: 12,
+			name_startsWith: request.term
+		},
+		success: function( data ) {
+			response( $.map( data.geonames, function( item ) {
+				return { label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName, value: item.name }
+			}));
+		}
+	});
+	},
+	minLength: 2,
+  });
+});
+</script>
 <h2><?echo $id>0 ? "Modificar chaval/a" : "Insertar nuevo chaval/a" ?></h2>
 <form name="insertar" method="post" action="<?echo $PHP_SELF.'?section='.HTML_kid::$section.'&task=save&id='.$id?>">
 
@@ -36,21 +60,19 @@ class HTML_kid {
 	  <legend>Datos familiares</legend>
 	  
 	  <ul>
-	  	<li><label for="ama">Ama:</label>
-	  	    <input type="text" id="ama" name="ama" value="<?echo $row['AMA']?>">
-		</li>
-
-	  	<li><label for="dni_ama">DNI Ama:</label>
-	  	    <input type="text" id="dni_ama" name="dni_ama" maxlength="10" value="<?echo $row['DNI_AMA']?>">
-		</li>
-	
-	  	<li><label for="aita">Aita:</label>
-	  	    <input type="text" id="aita" name="aita" value="<?echo $row['AITA']?>">
-		</li>
-
-	  	<li><label for="dni_aita">DNI Aita:</label>
-	  	    <input type="text" id="dni_aita" name="dni_aita" maxlength="10" value="<?echo $row['DNI_AITA']?>">
-		</li>
+    		<li><div class="controls controls-row">
+    			<label class="control-label" for="ama">Ama:</label>
+	  	    	<input class="span2" type="text" id="ama" name="ama" value="<?echo $row['AMA']?>">
+    			<label class="span1 control-label" for="dni_ama">DNI Ama:</label>
+	  	    	<input class="span2" type="text" id="dni_ama" name="dni_ama" maxlength="10" value="<?echo $row['DNI_AMA']?>">
+    		</div></li>
+    		
+		<li><div class="controls controls-row">
+    			<label class="control-label" for="aita">Aita:</label>
+	  	    	<input class="span2" type="text" id="aita" name="aita" value="<?echo $row['AMA']?>">
+    			<label class="span1 control-label" for="dni_aita">DNI Aita:</label>
+	  	    	<input class="span2" type="text" id="dni_aita" name="dni_aita" maxlength="10" value="<?echo $row['DNI_AITA']?>">
+    		</div></li>
 	  </ul>
 	</fieldset>
 
@@ -59,24 +81,33 @@ class HTML_kid {
 	
 	  <ul>	
 	  	<li><label for="direccion">Dirección:</label>
-	  	    <input type="text" id="direccion" name="direccion" value="<?echo $row['DIRECCION']?>" required>
+	  	    <div class="input-prepend">
+			<span class="add-on">&nbsp;C/&nbsp;</span>
+	  	        <input type="text" class="span4" id="direccion" name="direccion" value="<?echo $row['DIRECCION']?>" required>
+		    </div>
 		</li>
 
-	  	<li><label for="municipio">Municipio:</label>
-	  	    <input type="text" id="municipio" name="municipio" value="<?echo $row['MUNICIPIO']?>" required>
-		</li>
-	  
-	  	<li><label for="cpostal">Código Postal:</label>
-	  	    <input type="text" id="cpostal" name="cpostal" maxlength="5" value="<?echo $row['CODIGO_POSTAL']?>" required>
+	  	<li><div class="controls controls-row">
+			<label for="municipio">Municipio:</label>
+	  	    	<input type="text" class="span2" id="municipio" name="municipio" value="<?echo $row['MUNICIPIO']?>" class="ui-autocomplete-input" autocomplete="off" required>
+	  		<label for="cpostal">&nbsp;&nbsp;C. Postal:</label>
+	  	    	<input type="text" class="span1" id="cpostal" name="cpostal" maxlength="5" value="<?echo $row['CODIGO_POSTAL']?>" required>
+		    </div>
 		</li>
 	  
 	  	<li><label for="provincia">Provincia:</label>
 	  	    <input type="text" id="provincia" name="provincia" value="<?echo $row['PROVINCIA']?>" required>
 		</li>
-	  
-	  	<li><label for="email">E-mail:</label>
-	  	    <input type="email" id="email" name="email" value="<?echo $row['EMAIL']?>">
-		</li>
+	 
+    		<li><div class="control-group">
+    			<label class="control-label" for="email">Email</label>
+    			<div class="controls">
+    				<div class="input-prepend">
+    					<span class="add-on"><i class="icon-envelope"></i></span>
+    					<input class="span3" id="email" name="email" type="email" value="<?echo $row['EMAIL']?>">
+    				</div>
+    			</div>
+    		</div></li>
 	  
 	  	<li><label for="telefono1">Teléfono 1:</label>
 	  	    <input type="text" id="telefono1" name="telefono1" maxlength="9" value="<?echo $row['TELEFONO1']?>" required>
@@ -90,12 +121,12 @@ class HTML_kid {
 	
 	<fieldset>
 	  <legend>Otros datos</legend>
-	  <textarea rows="10" style="width:450px" id="observaciones" name='observaciones'><?echo $row['OBSERVACIONES']?></textarea>
+	  <textarea rows="10" class="span6" id="observaciones" name='observaciones'><?echo $row['OBSERVACIONES']?></textarea>
 	</fieldset>
 	
 	<div>
-		<input class="button" type="submit" value="Guardar" name="enviar">
-	  	<input class="button" type="reset" value="Restablecer" name="reset">
+		<input class="btn" type="submit" value="Guardar" name="enviar">
+	  	<input class="btn" type="reset" value="Restablecer" name="reset">
 	</div>
 
   </table>

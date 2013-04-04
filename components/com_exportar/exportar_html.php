@@ -70,7 +70,7 @@ $(document).ready(function() {
 
 	<fieldset>
 		<legend>Total de chavales</legend>
-		<table border="0" align="center">
+		<table border="0" align="center" class='table table-condensed'>
         		<tr>
                 		<th>Rama</th>
                 		<th>Total</th>

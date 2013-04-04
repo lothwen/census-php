@@ -2,10 +2,11 @@
 <ul>
     <li>
       <h2 class="sidebartitle">Búsqueda rápida de chavales</h2>
-	<form method="post" id="searchform" action="index2.php?section=chavales&task=show&rama=0">
-		<div><input type="text" value="" name="search" id="s" />
-			<input type="submit" id="searchsubmit" value="Buscar" />
-		</div>
+	<form method="post" class="form-search" id="searchform" action="index2.php?section=chavales&task=show&rama=0">
+		<div class="input-append">
+			<input type="text" class="span2 search-query" name="search" id="s">
+			<button type="submit" class="btn">Buscar</button>
+		</div>	
 	</form>
     </li>
 
