@@ -21,9 +21,9 @@ class HTML_admin_grupos {
 		</table>
 		  
 		<div class="center">
-	  	    <input class="button" type="button" value="Guardar" name="enviar">
-	  	    <input class="button" type="reset" value="Restablecer" name="reset">
-		    <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'>
+	  	    <input class="btn" type="button" value="Guardar" name="enviar">
+	  	    <input class="btn" type="reset" value="Restablecer" name="reset">
+		    <a class='btn' href="index2.php?section=<?echo $_GET['section']?>">Volver</a>
 		</div>
 	
 		</form>
@@ -71,7 +71,7 @@ class HTML_admin_grupos {
 
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>&task=new"' value='Nuevo grupo'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']?>&task=new">Nuevo grupo</a>
 		</div>
 	<?}
 }

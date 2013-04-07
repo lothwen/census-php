@@ -75,8 +75,8 @@ class HTML_librodiario {
 		  </tr>
 
 		  <tr>
-	  	    <td><input class="button" type="submit" value="Guardar" name="enviar"></td>
-	  	    <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
+	  	    <td><input class="btn" type="submit" value="Guardar" name="enviar"></td>
+	  	    <td><input class="btn" type="reset" value="Restablecer" name="reset"></td>
 		  </tr>
 	        </table>
 	
@@ -129,7 +129,7 @@ class HTML_librodiario {
 		</div>
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>"' value='Volver'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>">Volver</a>
 		</div>
 	<?
 	}
@@ -142,7 +142,7 @@ class HTML_librodiario {
 		?>
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>&task=new"' value='Nueva linea de Ingreso/Gasto'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>&task=new">Nueva linea de Ingreso/Gasto</a>
 		</div>
 		<br /><br />
 		<?

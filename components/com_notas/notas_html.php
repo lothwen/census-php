@@ -21,8 +21,8 @@ class HTML_notas {
 		  </tr>
 
 		  <tr>
-	  	    <td><input class="button" type="submit" value="Guardar" name="enviar" /></td>
-	  	    <td><input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'></td>
+	  	    <td><input class="btn" type="submit" value="Guardar" name="enviar" /></td>
+	  	    <td><a class='btn' href="index2.php?section=<?echo $_GET['section']?>">Volver</a></td>
 		  </tr>
 	        </table>
 	
@@ -54,7 +54,7 @@ class HTML_notas {
 
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>&task=new"' value='Nueva nota'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']?>&task=new">Nueva nota</a>
 		</div>
 	<?}
 }

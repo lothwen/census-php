@@ -128,8 +128,8 @@ class HTML_presupuestos {
 		<br />
   		<table width="60%" align="center">
 		  <tr>
-	  	    <td><input class="button" type="submit" value="Guardar" name="enviar"></td>
-	  	    <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
+	  	    <td><input class="btn" type="submit" value="Guardar" name="enviar"></td>
+	  	    <td><input class="btn" type="reset" value="Restablecer" name="reset"></td>
 		  </tr>
 	        </table>
 	
@@ -233,7 +233,7 @@ class HTML_presupuestos {
 		?>
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>&task=new"' value='Nuevo presupuesto'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']."&subsection=".$_GET['subsection']?>&task=new">Nuevo presupuesto</a>
 		</div>
 		<br /><br />
 		<h2>Años anteriores</h2>

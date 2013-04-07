@@ -25,9 +25,9 @@ class HTML_usuarios {
 		</table>
 		  
 		<div class="center">
-	  	    <input class="button" type="submit" value="Guardar" name="enviar">
-	  	    <input class="button" type="reset" value="Restablecer" name="reset">
-		        <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'>
+	  	    <input class="btn" type="submit" value="Guardar" name="enviar">
+	  	    <input class="btn" type="reset" value="Restablecer" name="reset">
+		        <a class='btn' href="index2.php?section=<?echo $_GET['section']?>">Volver</a>
 		</div>
 	
 		</form>
@@ -59,7 +59,7 @@ class HTML_usuarios {
 
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>&task=new"' value='Nuevo usuario'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']?>&task=new">Nuevo usuario</a>
 		</div>
 	<?}
 }

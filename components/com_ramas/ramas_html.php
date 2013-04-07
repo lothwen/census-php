@@ -16,9 +16,9 @@ class HTML_ramas {
 		  </tr>
 
 		  <tr>
-	  	    <td><input class="button" type="submit"value="Guardar" name="enviar"></td>
-	  	    <td><input class="button" type="reset" value="Restablecer" name="reset">
-		        <input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>"' value='Volver'></td>
+	  	    <td><input class="btn" type="submit"value="Guardar" name="enviar"></td>
+	  	    <td><input class="btn" type="reset" value="Restablecer" name="reset">
+		        <a class="btn" href="index2.php?section=<?echo $_GET['section']?>">Volver</a></td>
 		  </tr>
 	        </table>
 	
@@ -50,7 +50,7 @@ class HTML_ramas {
 
 		<br />
 		<div class="center">
-			<input type='button' onCLick='javascript:window.location="index2.php?section=<?echo $_GET['section']?>&task=new"' value='Nueva rama'>
+			<a class='btn' href="index2.php?section=<?echo $_GET['section']?>&task=new">Nueva rama</a>
 		</div>
 	<?}
 }
