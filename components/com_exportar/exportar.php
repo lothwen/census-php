@@ -37,11 +37,13 @@ function pdf( ) {
 	
 	include 'pdf.php';
 
+	$sSql = "select * from censo where RAMA in (".implode(',',$_POST['ramas']).") order by RAMA, NOMBRE";
+
 	$pdf = new PDF('L','pt','A4');
 	$pdf->SetFont('Arial','',9);
 	$pdf->AliasNbPages();
 	$attr=array('titleFontSize'=>18,'titleText'=> $_SESSION['val_nombre_grupo']);
-	$pdf->mysql_report("select * from censo",false,$attr);
+	$pdf->mysql_report($sSql,false,$attr);
 
 	ob_flush(); // Output the pdf
 	
@@ -72,8 +74,8 @@ function labels( ) {
 	$pdf->Open();
 
 	//Print labels
-	$sSql = "SELECT NOMBRE,APELLIDOS,DIRECCION,MUNICIPIO,CODIGO_POSTAL,PROVINCIA 
-		FROM censo where RAMA in (".implode(',',$_POST['ramas']).")";
+	$sSql = "select NOMBRE,APELLIDOS,DIRECCION,MUNICIPIO,CODIGO_POSTAL,PROVINCIA 
+		from censo where RAMA in (".implode(',',$_POST['ramas']).") order by RAMA, NOMBRE";
 
 	foreach($db-> f_sql($sSql) as $fila) {
      	
@@ -86,23 +88,23 @@ function labels( ) {
 		$label .= $fila['PROVINCIA'];
 
 		$pdf->Add_PDF_Label(iconv("utf-8", "iso-8859-1", $label));
-}
+	}
 
-$nombre = "etiquetas" . date("d-m-y") . ".pdf";
-$pdf->Output($nombre,"D");
+	$nombre = "etiquetas" . date("d-m-y") . ".pdf";
+	$pdf->Output($nombre,"D");
 
-ob_flush(); // Output the pdf
-	
-echo $ob; // Out the page
+	ob_flush(); // Output the pdf
+		
+	echo $ob; // Out the page
 
-controller();
+	controller();
 }
 
 function html( ) {
 
 	global $db;
 
-	$sql = "select ID,NOMBRE from ramas";
+	$sql = "select ID,NOMBRE from ramas where ID in (".implode(',',$_POST['ramas']).")";
 	foreach($db-> f_sql($sql) as $fila){?>
 		<br />
 		<h3><?echo $fila['NOMBRE']?></h3>
@@ -114,24 +116,26 @@ function html( ) {
 			</tr>
 	
 		<?
-		$sql = "select NOMBRE,APELLIDOS,DNI,DNI_AMA,DNI_AITA from censo where RAMA='".$fila['ID']."'";
-
+		$sql = "select NOMBRE,APELLIDOS,DNI,DNI_AMA,DNI_AITA from censo where RAMA='".$fila['ID']."' order by NOMBRE";
 		foreach($db-> f_sql($sql) as $fila){
 
-			 echo "<tr>";
-		         echo "<td>".$fila['NOMBRE']."</td>";
-			 echo "<td>".$fila['APELLIDOS']."</td>";
-		         if ($fila['DNI']!="")
-			         echo "<td>".$fila['DNI']."</td>";
-			 elseif($fila['DNI_AMA'])
-			         echo "<td>".$fila['DNI_AMA']." (Ama)</td>";
-			 elseif($fila['DNI_AITA'])
-			         echo "<td>".$fila['DNI_AITA']." (Aita)</td>";
-		   	 else
-				 echo "<td>Faltan datos</td>";
+		        $tr_class="";
 
-			 echo "</tr>";
-		 } ?>
+			if ($fila['DNI']!="") $dni = $fila['DNI'];
+			elseif($fila['DNI_AMA']) $dni = $fila['DNI_AMA']." (Ama)";
+			elseif($fila['DNI_AITA']) $dni = $fila['DNI_AITA']." (Aita)";
+		   	else {
+				$tr_class = "error";
+				$dni = "Faltan datos";
+			}
+			 
+			echo "<tr class='".$tr_class."'>";
+		        echo "<td>".$fila['NOMBRE']."</td>";
+			echo "<td>".$fila['APELLIDOS']."</td>";
+			echo "<td>".$dni."</td>";
+
+			echo "</tr>";
+		} ?>
 		</table>
 	<?}
 }
