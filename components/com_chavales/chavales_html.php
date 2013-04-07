@@ -84,7 +84,7 @@ $(document).ready(function() {
     		
 		<li><div class="controls controls-row">
     			<label class="control-label" for="aita">Aita:</label>
-	  	    	<input class="span2" type="text" id="aita" name="aita" value="<?echo $row['AMA']?>">
+	  	    	<input class="span2" type="text" id="aita" name="aita" value="<?echo $row['AITA']?>">
     			<label class="span1 control-label" for="dni_aita">DNI Aita:</label>
 	  	    	<input class="span2" type="text" id="dni_aita" name="dni_aita" maxlength="10" value="<?echo $row['DNI_AITA']?>">
     		</div></li>
