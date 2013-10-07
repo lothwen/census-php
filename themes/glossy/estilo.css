@@ -237,7 +237,6 @@ form ul li {
 }
 /* search form button - to specify button only use input[type="submit"] */
 #searchform input {
-        background: url(img/search-btn-bg.gif) no-repeat;
         border: none;
         width: 67px;
         height: 26px;
@@ -249,7 +248,7 @@ form ul li {
 /* footer area */
 #footer {
 	clear: both;
-	background: #048DB4 url(img/footer-bg.gif) no-repeat;
+	background-color: #048DB4;
 	color: #ACD7EE;
 	font-size: 95%;
 	line-height: 130%;
