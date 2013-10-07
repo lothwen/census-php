@@ -5,7 +5,7 @@
 	<form method="post" class="form-search" id="searchform" action="index2.php?section=chavales&task=show&rama=0">
 		<div class="input-append">
 			<input type="text" class="span2 search-query" name="search" id="s">
-			<button type="submit" class="btn">Buscar</button>
+			<button type="submit" class="btn"><i class="icon-search"></i>&nbsp;</button>
 		</div>	
 	</form>
     </li>
