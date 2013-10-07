@@ -58,8 +58,8 @@ class cHtml {
 		else $where = "";
 
 		$retorno = "<div id='div$selectname' style='display:inline'>
-		    		<select class='select' name='$selectname' id='$selectname'>
-				    <option value='0'>Seleccione una opción</option>";
+		    		<select class='select' name='$selectname' id='$selectname' required>
+				    <option value=''>Seleccione una opción</option>";
 	
 		$sql = "select $ddbbid,$NAME from $ddbbtable $where order by $NAME";
 		foreach ($db-> f_sql($sql) as $fila){
