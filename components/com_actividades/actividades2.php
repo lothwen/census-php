@@ -56,7 +56,7 @@ foreach($db-> f_sql($sSql) as $row){
 
 <input type="hidden" name="cod_actividad" value="<?echo $codigo?>">
 <input type="hidden" name="abierta" value="<?echo $abierta?>">
-<input class="button" type="submit" name="nuevo" value="Nuevo asistente">
+<input class="btn" type="submit" name="nuevo" value="Nuevo asistente">
 </form>
 <?
 $sSql = "SELECT actividadChaval.NUM_ACOM, censo.NOMBRE, censo.APELLIDOS ";

@@ -69,8 +69,8 @@ class HTML_grupo {
 		<br />
 
 		<div class="center">
-	     	    <input class="button" type="submit" value="Guardar" name="enviar">
-	  	    <input class="button" type="reset" value="Restablecer" name="reset">
+	     	    <input class="btn" type="submit" value="Guardar" name="enviar">
+	  	    <input class="btn" type="reset" value="Restablecer" name="reset">
 	  	</div>
 	
 		</form>

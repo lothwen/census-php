@@ -30,7 +30,7 @@ foreach($db-> f_sql($sSql) as $row){
 <?}?>
 
 </table>
-		<br><center><input class="button" type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
+		<br><center><input class="btn" type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
 
 
 

@@ -183,7 +183,7 @@ $(document).ready(function() {
 		<br />
 
 		<div class="center">
-	        	<input class="button" type="submit" value="Buscar" name="enviar">
+	        	<input class="btn" type="submit" value="Buscar" name="enviar">
 	        </div>
 
 	</form>

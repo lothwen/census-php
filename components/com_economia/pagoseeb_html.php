@@ -17,8 +17,8 @@ class HTML_pagoseeb {
 		  </tr>
 
 		  <tr>
-	  	    <td><input class="button" type="button" value="Guardar" name="enviar"></td>
-	  	    <td><input class="button" type="reset" value="Restablecer" name="reset"></td>
+	  	    <td><input class="btn" type="button" value="Guardar" name="enviar"></td>
+	  	    <td><input class="btn" type="reset" value="Restablecer" name="reset"></td>
 		  </tr>
 	        </table>
 	
