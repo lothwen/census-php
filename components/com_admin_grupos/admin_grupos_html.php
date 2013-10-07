@@ -59,7 +59,7 @@ class HTML_admin_grupos {
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_GRUPO]\">$fila[NOMBRE_BBDD]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\">$count[COUNT]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\" class='confirm'><img src=\"".$THEMEDIR."/img/borrar.png\" border=0 /></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_GRUPO]\" class='confirm-delete' data-id='$fila[COD_GRUPO]'><i class='icon-trash' title='Borrar'></i></a>";
 	
 			$filas[] = $row;
 		}
@@ -67,6 +67,7 @@ class HTML_admin_grupos {
 		$headers_list = Array("Nombre","Base de datos","Nº de personas","");
 		
 		echo cHtml::widget_table("80%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_admin_grupos::$section);
 		?>
 
 		<br />

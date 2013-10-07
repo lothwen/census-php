@@ -102,6 +102,7 @@ function save( $id ) {
 	controller(); // Call to controller without params to show the default option.
 }
 
+// Called only from AJAX
 function remove( $id ) {
 
 	global $db;
@@ -111,8 +112,6 @@ function remove( $id ) {
 	
 	// Con esta sentencia SQL, borramos el registro de la tabla de usuarios
 	$db-> f_sql("DELETE FROM Usuarios WHERE COD_GRUPO=$id");
-	
-	controller(); // Call to controller without params to show the default option.
 }
 
 function show( ) {

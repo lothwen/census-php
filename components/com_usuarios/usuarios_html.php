@@ -47,7 +47,7 @@ class HTML_usuarios {
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_USUARIO]\">$fila[NOMBRE]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_USUARIO]\">$fila[USUARIO]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[COD_USUARIO]\">$fila[CLAVE]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_USUARIO]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[COD_USUARIO]\" class='confirm-delete' data-id='$fila[COD_USUARIO]'><i class='icon-trash' title='Borrar'></i></a>";
 	
 			$filas[] = $row;
 		}
@@ -55,6 +55,7 @@ class HTML_usuarios {
 		$headers_list = Array("Nombre","Usuario","Clave","");
 		
 		echo cHtml::widget_table("60%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_usuarios::$section);
 		?>
 
 		<br />

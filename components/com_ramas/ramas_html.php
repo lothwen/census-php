@@ -37,8 +37,7 @@ class HTML_ramas {
 			$row = Array();
 
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
-	
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\" class='confirm-delete' data-id='$fila[ID]'><i class='icon-trash' title='Borrar'></i></a>";	
 			$filas[] = $row;
 		}
 		
@@ -46,6 +45,7 @@ class HTML_ramas {
 		$columns_size = Array("90%","10%");
 		
 		echo cHtml::widget_table("40%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_ramas::$section);
 		?>
 
 		<br />

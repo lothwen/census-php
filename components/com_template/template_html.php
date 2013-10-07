@@ -40,7 +40,7 @@ class HTML_template {
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[APELLIDOS]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TELEFONO]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE_RAMA]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\" class='confirm-delete' data-id='$fila[ID]'><i class='icon-trash' title='Borrar'></i></a>";
 	
 			$filas[] = $row;
 		}
@@ -48,6 +48,7 @@ class HTML_template {
 		$headers_list = Array("Titulo1","Titulo2","Titulo3","Titulo4","");
 		
 		echo cHtml::widget_table("90%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_template::$section);
 	}
 }
 ?>

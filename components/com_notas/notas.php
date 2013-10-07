@@ -62,14 +62,13 @@ function save( $id ) {
 	controller(); // Call to controller without params to show the default option.
 }
 
+// Called only from AJAX
 function remove( $id ) {
 
 	global $db;
 
 	//Con esta sentencia SQL, borramos el registro de la bbdd
 	$db-> f_sql("DELETE FROM notas WHERE ID=$id");
-	
-	controller(); // Call to controller without params to show the default option.
 }
 
 function show( ) {

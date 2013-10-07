@@ -12,12 +12,12 @@ class HTML_notas {
   		<table width="100%" align="center">
 		  <tr>
 	  	    <td>Titulo: </td>
-	  	    <td><input type="text" name="titulo" value='<?echo $row['TITULO']?>' style='width:93%' required ></td>
+	  	    <td><input type="text" name="titulo" value='<?echo $row['TITULO']?>' class="span6" required ></td>
 		  </tr>
 		  
 		  <tr>
 	  	    <td>Contenido: </td>
-	  	    <td><textarea cols="50" rows='30' name="contenido" required ><?echo $row['CONTENIDO']?></textarea></td>
+	  	    <td><textarea class="span6" rows='30' name="contenido" required ><?echo $row['CONTENIDO']?></textarea></td>
 		  </tr>
 
 		  <tr>
@@ -41,7 +41,7 @@ class HTML_notas {
 			$row = Array();
 
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TITULO]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\" class='confirm-delete' data-id='$fila[ID]'><i class='icon-trash' title='Borrar'></i></a>";
 	
 			$filas[] = $row;
 		}
@@ -50,6 +50,7 @@ class HTML_notas {
 		$columns_size = Array("90%","10%");
 		
 		echo cHtml::widget_table("90%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_notas::$section);
 		?>
 
 		<br />

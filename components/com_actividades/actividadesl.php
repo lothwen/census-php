@@ -25,14 +25,13 @@ foreach($db-> f_sql($sSql) as $row){
 		<td><a href="actividades2.php?id=<?echo $row['ID']?>&abierta=<?echo $row['ACOMPANANTES']?>"><?echo $row['NOMBRE']?></a></td>
 		<td><?echo $row['FECHA']?></td>
 		<td><a href="actividadesa.php?editar=<?echo $row['ID']?>"><img src="<?echo $THEMEDIR?>/img/editar.png" border="0"></a>
-		    <a href="actividadesa.php?borrar=<?echo $row['ID']?>"><img src="<?echo $THEMEDIR?>/img/borrar.png" border="0"></a></td>
+		    <a href="actividadesa.php?borrar=<?echo $row['ID']?>" class="confirm-delete" data-id="<?echo $row['ID']?>"><i class="icon-trash" title="Borrar"></i></a></td>
 	</tr>
 <?}?>
 
 </table>
-		<br><center><input class="btn" type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
 
-
+<br><center><input class="btn" type="button" value="Nuevo" onClick="window.location='actividadesa.php';"></center>
 
 <?
 include 'includes/footer.php';
