@@ -35,8 +35,8 @@ if($theme!=''){
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 	<!-- Bootstrap includes -->
-	<link href="<?echo $THEMEDIR?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<script src="<?echo $THEMEDIR?>/bootstrap/js/bootstrap.min.js"></script>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
 	<!-- Theme CSS file -->
 	<link rel="stylesheet" href="<?echo $THEMEDIR?>/estilo.css" type="text/css">
