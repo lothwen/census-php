@@ -76,14 +76,13 @@ function save_kid( $id ) {
 	controller(); // Call to controller without params to show the default option, finder.
 }
 
+// Called only from AJAX
 function remove_kid( $id ) {
 
 	global $db;
 
 	//Con esta sentencia SQL, borramos el registro de la bbdd
 	$db-> f_sql("DELETE FROM censo WHERE ID=$id");
-	
-	controller(); // Call to controller without params to show the default option, finder.
 }
 
 function show_kid( ) {

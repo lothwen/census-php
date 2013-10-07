@@ -205,7 +205,7 @@ $(document).ready(function() {
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[APELLIDOS]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[TELEFONO1]</a>";
 			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=edit&id=$fila[ID]\">$fila[NOMBRE_RAMA]</a>";
-			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\"><img src=\"".$THEMEDIR."/img/borrar.png\" border=0/></a>";
+			$row[] = "<a href=\"index2.php?section=$_GET[section]&task=remove&id=$fila[ID]\" class='confirm-delete' data-id='$fila[ID]'><i class='icon-trash' title='Borrar'></i></a>";
 	
 			$filas[] = $row;
 		}
@@ -213,6 +213,7 @@ $(document).ready(function() {
 		$headers_list = Array("Nombre","Apellidos","Telefono","Rama","");
 		
 		echo cHtml::widget_table("90%",$headers_list,$filas,$columns_size);
+		echo cHtml::widget_deleteModal(HTML_kid::$section);
 	}
 }
 ?>
