@@ -41,7 +41,7 @@
 				</ul>
 			</li>
 			<?}?>
-			<li><a class="page_item" href="index2.php?section=logout"><i class="icon-off icon-white"></i>&nbsp;Salir</a></li>
+			<li><a class="page_item" href="index2.php?section=logout">Salir&nbsp;<i class="icon-off icon-white"></i></a></li>
 		</ul>
 	</div>
 		
