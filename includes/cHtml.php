@@ -19,23 +19,17 @@ class cHtml {
 	 * @param string $defaultdate Opcional fecha por defecto.
 	 * return string
 	 */
-	function widget_date($inputname,$defaultdate=NULL,$onchangescript=NULL) {
-		$id_fechaini = "f".rand("1000","4000");
-		$id_boton = "b".rand("1000","4000");
-		if ($onchangescript!=NULL) 
-			$onchange="onChange=\"javascript:$onchangescript\"";
-		$retorno = "
-			<input class='text' id='$id_fechaini' name='$inputname' style='width: 70px' value='$defaultdate' $onchange> 
-			<input id='$id_boton' value='...' type='button' class='input_botonfecha'> 
-				<SCRIPT type=text/javascript>
-					Calendar.setup({
-	 				inputField     :    \"$id_fechaini\",     
-					ifFormat       :    \"%d/%m/%Y\",   
-					button         :    \"$id_boton\"   
-					});
-				</SCRIPT>";
-		return $retorno;
-	}	
+	function widget_date($inputname, $defaultdate=NULL) {
+		return '<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="'.$defaultdate.'" id="'.$inputname.'-container" class="input-append date">
+				<input type="text" value="'.$defaultdate.'" name="'.$inputname.'" size="16" class="span">
+				<span class="add-on"><i class="icon-calendar"></i></span>
+			</div>
+			<script>$("#'.$inputname.'-container").datepicker({
+								"setValue": "'.$defaultdate.'",
+								"format": "dd/mm/yyyy"
+			});</script>
+			';
+	}
 
 	/**
 	 * Devuelve el codigo html correspondiente al tag select que se quiere generar.

@@ -40,7 +40,8 @@ function edit_kid( $id ) {
 	global $db;
 
 	if ($id > 0 ){
-		$row = current($db-> f_sql("SELECT * FROM censo WHERE ID=$id"));
+		$row = current($db-> f_sql("SELECT *, DATE_FORMAT(FECHA_NACIMIENTO, '%d/%m/%Y') 
+					as FECHA_NACIMIENTO FROM censo WHERE ID=$id"));
 	}
 	
 	HTML_kid::edit( $id, $row );
@@ -53,8 +54,8 @@ function save_kid( $id ) {
 	if($id > 0){
 		// Actualizo todos los datos.
 		$sSql = "UPDATE censo SET NOMBRE='$_POST[nombre]', APELLIDOS='$_POST[apellidos]', " 
-			. "RAMA='$_POST[rama]', DNI='$_POST[dni]', AMA='$_POST[ama]',"
-			. "DNI_AMA='$_POST[dni_ama]', AITA='$_POST[aita]', DNI_AITA='$_POST[dni_aita]', "
+			. "RAMA='$_POST[rama]', DNI='$_POST[dni]', FECHA_NACIMIENTO=STR_TO_DATE('$_POST[fecha_nacimiento]','%d/%m/%Y'), "
+			. "AMA='$_POST[ama]', DNI_AMA='$_POST[dni_ama]', AITA='$_POST[aita]', DNI_AITA='$_POST[dni_aita]', "
 			. "EMAIL='$_POST[email]', DIRECCION='$_POST[direccion]', MUNICIPIO='$_POST[municipio]', "
 			. "CODIGO_POSTAL='$_POST[cpostal]', PROVINCIA='$_POST[provincia]', "
 			. "TELEFONO1='$_POST[telefono1]', TELEFONO2='$_POST[telefono2]', "
@@ -62,13 +63,13 @@ function save_kid( $id ) {
 	
 	}else{
 		//Con esta sentencia SQL, insertamos los datos en la bbdd
-		$sSql = "INSERT INTO censo (NOMBRE, APELLIDOS, RAMA, DNI, AMA, DNI_AMA, AITA, DNI_AITA, EMAIL, 
-			 DIRECCION, MUNICIPIO, CODIGO_POSTAL, PROVINCIA, TELEFONO1, TELEFONO2, OBSERVACIONES, 
+		$sSql = "INSERT INTO censo (NOMBRE, APELLIDOS, RAMA, DNI, FECHA_NACIMIENTO, AMA, DNI_AMA, AITA, DNI_AITA, 
+		 	 EMAIL, DIRECCION, MUNICIPIO, CODIGO_POSTAL, PROVINCIA, TELEFONO1, TELEFONO2, OBSERVACIONES, 
 			 ULT_FECHA, FECHA_ALTA) VALUES('".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['rama']."',
-			 '".$_POST['dni']."','".$_POST['ama']."','".$_POST['dni_ama']."',
-        	         '".$_POST['aita']."','".$_POST['dni_aita']."','".$_POST['email']."','".$_POST['direccion']."',
-			 '".$_POST['municipio']."','".$_POST['cpostal']."','".$_POST['provincia']."','".$_POST['telefono1']."',
-		  	 '".$_POST['telefono2']."','".$_POST['observaciones']."', NOW(),NOW())";
+			 '".$_POST['dni']."',STR_TO_DATE('".$_POST['fecha_nacimiento']."', '%d/%m/%Y'),'".$_POST['ama']."',
+		 	 '".$_POST['dni_ama']."','".$_POST['aita']."','".$_POST['dni_aita']."','".$_POST['email']."',
+			 '".$_POST['direccion']."','".$_POST['municipio']."','".$_POST['cpostal']."','".$_POST['provincia']."',
+			 '".$_POST['telefono1']."','".$_POST['telefono2']."','".$_POST['observaciones']."', NOW(),NOW())";
 	
 	}
 	$db-> f_sql($sSql);

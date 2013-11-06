@@ -8,9 +8,8 @@ include 'includes/html_heads.php';
 
 <h2 style='color:red;font-weight:bold'>ULTIMOS CAMBIOS:</h2>
 <ul>
-	<li><h3 style='color:red'>ARREGLADOS FALLOS EN IMPRESIÓN DE ETIQUETAS</h3></li>
+	<li><h3 style='color:red'>Añadido campo "Fecha de nacimiento" en la ficha de chaval.</h3></li>
 	<li><h3 style='color:red'>Si faltan códigos postales, habría que completar las fichas de los chavales que les falte el código postal.</h3></li>
-	<li><h3 style='color:red'>Mejorada la ficha del chaval con nuevos campos y mas ordenados</h3></li>
 </ul>
 
 <h3 style='color:green'>Para cualquier pregunta, problema, sugerencia, piropo :-) , podéis contactar conmigo por email en <a href='mailto:danillo@euskai.org'>danillo@euskai.org</a></h3>

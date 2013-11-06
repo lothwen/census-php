@@ -7,6 +7,10 @@ class HTML_kid {
 	function edit( $id=0, $row ) {
 
 ?>
+<!-- Bootstrap datepicker includes -->
+<link href="js/datepicker/css/datepicker.css" rel="stylesheet">
+<script type="text/javascript" src="js/datepicker/js/bootstrap-datepicker.js" ></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.ajax-typehead').typeahead({
@@ -67,6 +71,9 @@ $(document).ready(function() {
 
 	  	<li><label for="dni">DNI:</label>
 	  	    <input type="text" id="dni" name="dni" maxlength="10" value="<?echo $row['DNI']?>">
+		</li>
+	  	<li><label for="dni">Fecha de Nacimiento:</label>
+		    <?echo cHtml::widget_date("fecha_nacimiento", $row['FECHA_NACIMIENTO']);?>
 		</li>
 	  </ul>
 	</fieldset>
