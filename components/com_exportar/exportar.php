@@ -113,11 +113,12 @@ function html( ) {
 				<td><b>NOMBRE</b></td>
 				<td><b>APELLIDOS</b></td>
 				<td><b>DIRECCION</b></td>
+				<td><b>FECHA NAC.</b></td>
 				<td><b>DNI</b></td>
 			</tr>
 	
 		<?
-		$sql = "select NOMBRE,APELLIDOS,DNI,DNI_AMA,DNI_AITA,DIRECCION from censo where RAMA='".$fila['ID']."' order by NOMBRE";
+		$sql = "select NOMBRE,APELLIDOS,DNI,DNI_AMA,DNI_AITA,DIRECCION,FECHA_NACIMIENTO from censo where RAMA='".$fila['ID']."' order by NOMBRE";
 		foreach($db-> f_sql($sql) as $fila){
 
 		        $tr_class="";
@@ -134,6 +135,7 @@ function html( ) {
 		        echo "<td>".$fila['NOMBRE']."</td>";
 			echo "<td>".$fila['APELLIDOS']."</td>";
 			echo "<td>".$fila['DIRECCION']."</td>";
+			echo "<td>".$fila['FECHA_NACIMIENTO']."</td>";
 			echo "<td>".$dni."</td>";
 
 			echo "</tr>";
