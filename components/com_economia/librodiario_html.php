@@ -8,14 +8,6 @@ class HTML_librodiario {
 		
 		global $THEMEDIR;
 		?>
-
-		<style>
-		<?echo "@import url('$THEMEDIR/calendar.css');";?>
-		</style>
-		<script src="js/calendar.js" type=text/javascript></script>
-		<script src="js/calendar-es.js" type=text/javascript></script>
-		<script src="js/calendar-setup.js" type=text/javascript></script>
-		
 		<script>
 		function ensureNumeric(e){
 
@@ -35,10 +27,8 @@ class HTML_librodiario {
 						$("#combo2").html(data);
 						$("#combo3").html("");
 					});			
-
-        });
-
-   })
+        			});
+   			})
 		</script>
 
 		<h2><?echo $id>0 ? $titulo="Modificar linea" : $titulo="Insertar nueva linea";?></h2>

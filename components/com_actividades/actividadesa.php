@@ -30,16 +30,6 @@ if ($actualizar){
 	Header("Location: actividadesl.php");
 }
 
-?>
-<style>
-<?echo "@import url('$THEMEDIR/calendar.css')";?>
-</style>
-<script src="js/calendar.js" type=text/javascript></script>
-<script src="js/calendar-es.js" type=text/javascript></script>
-<script src="js/calendar-setup.js" type=text/javascript></script>
-
-<?
-
 if ($editar){
 	$sSql = "SELECT * FROM actividades WHERE ID=".$_GET['editar'];
 	$row= current(f_sql($sSql));
@@ -61,12 +51,6 @@ if ($editar){
 		<tr>
 			<td>Fecha: </td>
 			<td><input  id="fecha" name="fecha"value="<?if($editar) echo $row['FECHA']?>"> <input id="boton_lanzador" type="button" value="..."><br></td>
-		<script type=text/javascript>
-			Calendar.setup({
-			inputField:"fecha",// id del campo de texto
-			ifFormat:"%d/%m/%Y",// formato de la fecha, cuando se escriba en el campo de texto
-			button:"boton_lanzador"});// el id del botón que lanzará el calendario
-		</script>
 		</tr>
 		<tr height="20"></tr>
 		<tr>
