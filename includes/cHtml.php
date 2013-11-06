@@ -65,6 +65,7 @@ class cHtml {
 		foreach ($db-> f_sql($sql) as $fila){
 			$id = $fila[$ddbbid];
 			if ($id == $defaultid) $select = "selected";
+			else $select = "";
 			if (is_array($ddbbname )) {
 				for ($j=0; $j<count($ddbbname); $j++) {
 					$n = $ddbbname[$j];
